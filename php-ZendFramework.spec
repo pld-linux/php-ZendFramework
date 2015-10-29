@@ -2,6 +2,9 @@
 # Conditional build:
 %bcond_with	tests		# build with tests
 
+# NOTE:
+# - ZendXml has it's own versioning schema, version 1.0.1 as of 2.4.8 ZF2 release
+
 Summary:	Zend Framework 2
 Name:		php-ZendFramework
 Version:	2.4.8
