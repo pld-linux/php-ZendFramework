@@ -84,8 +84,8 @@ URL:		http://framework.zend.com/manual/2.4/en/modules/zend.captcha.intro.html
 Requires:	%{name} = %{version}-%{release}
 
 %description Captcha
-CAPTCHA stands for “Completely Automated Public Turing test to tell
-Computers and Humans Apart”; it is used as a challenge-response to
+CAPTCHA stands for "Completely Automated Public Turing test to tell
+Computers and Humans Apart'; it is used as a challenge-response to
 ensure that the individual submitting information is a human and not
 an automated process. Typically, a CAPTCHA is used with form
 submissions where authenticated users are not necessary, but you want
@@ -205,7 +205,7 @@ Requires:	%{name} = %{version}-%{release}
 
 %description Di
 Dependency Injection (here-in called DI) is a concept that has been
-talked about in numerous places over the web. Simply put, we’ll
+talked about in numerous places over the web. Simply put, we'll
 explain the act of injecting dependencies simply with this below code:
 
 $b = new MovieLister(new MovieFinder());
@@ -231,7 +231,7 @@ Requires:	%{name} = %{version}-%{release}
 
 %description Escaper
 The OWASP Top 10 web security risks study lists Cross-Site Scripting
-(XSS) in second place. PHP’s sole functionality against XSS is limited
+(XSS) in second place. PHP's sole functionality against XSS is limited
 to two functions of which one is commonly misapplied. Thus, the
 Zend\Escaper component was written. It offers developers a way to
 escape output and defend from XSS and related vulnerabilities by
@@ -504,7 +504,7 @@ The MVC layer is built on top of the following components:
   returning response and request calls, to setting and retrieving routes
   and matched routes, as well as render views.
 - Zend\Http - specifically the request and response objects.
-- Zend\Stdlib\DispatchableInterface. All “controllers” are simply
+- Zend\Stdlib\DispatchableInterface. All "controllers' are simply
   dispatchable objects.
 
 %package  Navigation
@@ -545,7 +545,7 @@ Requires:	%{name} = %{version}-%{release}
 %description Permissions-Acl
 The Zend\Permissions\Acl component provides a lightweight and flexible
 access control list (ACL) implementation for privileges management. In
-general, an application may utilize such ACL‘s to control access to
+general, an application may utilize such ACL's to control access to
 certain protected objects by other requesting objects.
 
 For the purposes of this documentation:
@@ -568,7 +568,7 @@ Requires:	%{name} = %{version}-%{release}
 
 %description Permissions-Rbac
 The Zend\Permissions\Rbac component provides a lightweight role-based
-access control implementation based around PHP 5.3’s SPL
+access control implementation based around PHP 5.3's SPL
 RecursiveIterator and RecursiveIteratorIterator. RBAC differs from
 access control lists (ACL) by putting the emphasis on roles and their
 permissions rather than objects (resources).
@@ -607,13 +607,13 @@ Requires:	%{name} = %{version}-%{release}
 The Zend\Server family of classes provides functionality for the
 various server classes, including Zend\XmlRpc\Server and
 Zend\Json\Server. Zend\Server\Server provides an interface that mimics
-PHP 5’s SoapServer class; all server classes should implement this
+PHP 5's SoapServer class; all server classes should implement this
 interface in order to provide a standard server API.
 
 The Zend\Server\Reflection tree provides a standard mechanism for
 performing function and class introspection for use as callbacks with
 the server classes, and provides data suitable for use with
-Zend\Server\Server‘s getFunctions() and loadFunctions() methods.
+Zend\Server\Server's getFunctions() and loadFunctions() methods.
 
 %package  ServiceManager
 Summary:	Zend Framework 2: ServiceManager Component
@@ -735,7 +735,7 @@ Requires:	%{name} = %{version}-%{release}
 Zend\Version provides a class constant Zend\Version\Version::VERSION
 that contains a string identifying the version number of your Zend
 Framework installation. Zend\Version\Version::VERSION might contain
-“1.7.4”, for example.
+"1.7.4', for example.
 
 The static method Zend\Version\Version::compareVersion($version) is
 based on the PHP function version_compare(). This method returns -1 if
@@ -749,7 +749,7 @@ URL:		http://framework.zend.com/manual/2.4/en/modules/zend.view.quick-start.html
 Requires:	%{name} = %{version}-%{release}
 
 %description View
-Zend\View provides the “View” layer of Zend Framework 2’s MVC system.
+Zend\View provides the "View' layer of Zend Framework 2's MVC system.
 It is a multi-tiered system allowing a variety of mechanisms for
 extension, substitution, and more.
 
@@ -759,10 +759,10 @@ URL:		http://framework.zend.com/manual/2.4/en/modules/zend.xmlrpc.intro.html
 Requires:	%{name} = %{version}-%{release}
 
 %description XmlRpc
-From its home page, XML-RPC is described as a ”...remote procedure
+From its home page, XML-RPC is described as a '...remote procedure
 calling using HTTP as the transport and XML as the encoding. XML-RPC
 is designed to be as simple as possible, while allowing complex data
-structures to be transmitted, processed and returned.”
+structures to be transmitted, processed and returned.'
 
 Zend Framework provides support for both consuming remote XML-RPC
 services and building new XML-RPC servers.
