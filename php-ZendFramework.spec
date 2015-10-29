@@ -211,6 +211,7 @@ Requires:	%{name}-Math = %{version}-%{release}
 Requires:	%{name}-ServiceManager = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
 Suggests:	php(hash)
+Suggests:	php(mcrypt)
 Suggests:	php(openssl)
 Suggests:	php(pcre)
 Suggests:	php(spl)
@@ -492,6 +493,7 @@ Summary:	Zend Framework 2: i18n Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.i18n.translating.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
+Requires:	php(intl)
 Suggests:	%{name}-Cache = %{version}-%{release}
 Suggests:	%{name}-Config = %{version}-%{release}
 Suggests:	%{name}-EventManager = %{version}-%{release}
@@ -568,11 +570,11 @@ Summary:	Zend Framework 2: LDAP Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.ldap.introduction.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
+Requires:	php(ldap)
 Suggests:	%{name}-EventManager = %{version}-%{release}
 Suggests:	php(date)
 Suggests:	php(iconv)
 Suggests:	php(json)
-Suggests:	php(ldap)
 Suggests:	php(mbstring)
 Suggests:	php(pcre)
 Suggests:	php(spl)
@@ -661,6 +663,7 @@ Summary:	Zend Framework 2: Math Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.math.introduction.html
 Requires:	%{name} = %{version}-%{release}
 Suggests:	%{name}-ServiceManager = %{version}-%{release}
+Suggests:	php(bcmath)
 Suggests:	php(mcrypt)
 Suggests:	php(openssl)
 Suggests:	php(pcre)
@@ -962,13 +965,13 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Server = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
 Requires:	%{name}-Uri = %{version}-%{release}
+Requires:	php(soap)
 Suggests:	%{name}-Http = %{version}-%{release}
 Suggests:	php(curl)
 Suggests:	php(dom)
 Suggests:	php(pcre)
 Suggests:	php(reflection)
 Suggests:	php(simplexml)
-Suggests:	php(soap)
 Suggests:	php(spl)
 Suggests:	php(xml)
 
@@ -1195,10 +1198,10 @@ services and building new XML-RPC servers.
 Summary:	Zend Framework 2: XML usage, best practices, and security in PHP
 URL:		https://github.com/zendframework/ZendXml
 Requires:	%{name} = %{version}-%{release}
-Suggests:	php(dom)
-Suggests:	php(simplexml)
-Suggests:	php(spl)
-Suggests:	php(xml)
+Requires:	php(dom)
+Requires:	php(simplexml)
+Requires:	php(spl)
+Requires:	php(xml)
 
 %description ZendXml
 This is a security component to prevent XML eXternal Entity (XXE) and
