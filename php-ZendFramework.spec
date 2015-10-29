@@ -9,7 +9,7 @@
 Summary:	Zend Framework 2
 Name:		php-ZendFramework
 Version:	2.4.8
-Release:	0.4
+Release:	0.5
 License:	BSD
 Group:		Development/Libraries
 Source0:	https://packages.zendframework.com/releases/ZendFramework-%{version}/ZendFramework-%{version}.tgz
@@ -64,6 +64,11 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
 Requires:	%{name}-Validator = %{version}-%{release}
 Suggests:	%{name}-ServiceManager = %{version}-%{release}
+Suggests:	php(dom)
+Suggests:	php(gd)
+Suggests:	php(iconv)
+Suggests:	php(pcre)
+Suggests:	php(spl)
 
 %description Barcode
 Zend\Barcode\Barcode provides a generic way to generate barcodes. The
@@ -81,6 +86,10 @@ Requires:	%{name}-Serializer = %{version}-%{release}
 Requires:	%{name}-ServiceManager = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
 Suggests:	%{name}-Session = %{version}-%{release}
+Suggests:	php(date)
+Suggests:	php(pcre)
+Suggests:	php(reflection)
+Suggests:	php(spl)
 
 %description Cache
 %{summary}
@@ -103,6 +112,9 @@ Requires:	%{name}-Stdlib = %{version}-%{release}
 Suggests:	%{name}-Session = %{version}-%{release}
 Suggests:	%{name}-Text = %{version}-%{release}
 Suggests:	%{name}-Validator = %{version}-%{release}
+Suggests:	php(date)
+Suggests:	php(gd)
+Suggests:	php(spl)
 
 %description Captcha
 CAPTCHA stands for "Completely Automated Public Turing test to tell
@@ -124,6 +136,10 @@ URL:		http://framework.zend.com/manual/2.4/en/index.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-EventManager = %{version}-%{release}
 Suggests:	%{name}-Stdlib = %{version}-%{release}
+Suggests:	php(pcre)
+Suggests:	php(reflection)
+Suggests:	php(spl)
+Suggests:	php(tokenizer)
 
 %description Code
 Provides facilities to generate arbitrary code using an object
@@ -138,6 +154,11 @@ Suggests:	%{name}-Filter = %{version}-%{release}
 Suggests:	%{name}-I18n = %{version}-%{release}
 Suggests:	%{name}-Json = %{version}-%{release}
 Suggests:	%{name}-ServiceManager = %{version}-%{release}
+Suggests:	php(pcre)
+Suggests:	php(spl)
+Suggests:	php(xml)
+Suggests:	php(xmlreader)
+Suggests:	php(xmlwriter)
 
 %description Config
 Zend\Config is designed to simplify access to configuration data
@@ -155,6 +176,10 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Filter = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
 Requires:	%{name}-Validator = %{version}-%{release}
+Suggests:	php(pcre)
+Suggests:	php(reflection)
+Suggests:	php(spl)
+Suggests:	php(xml)
 
 %description Console
 Zend Framework 2 features built-in console support.
@@ -185,6 +210,10 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Math = %{version}-%{release}
 Requires:	%{name}-ServiceManager = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
+Suggests:	php(hash)
+Suggests:	php(openssl)
+Suggests:	php(pcre)
+Suggests:	php(spl)
 
 %description Crypt
 Zend\Crypt provides support of some cryptographic tools. The available
@@ -214,6 +243,10 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
 Suggests:	%{name}-EventManager = %{version}-%{release}
 Suggests:	%{name}-ServiceManager = %{version}-%{release}
+Suggests:	php(date)
+Suggests:	php(pcre)
+Suggests:	php(pdo)
+Suggests:	php(spl)
 
 %description Db
 %{summary}
@@ -230,6 +263,7 @@ Summary:	Zend Framework 2: Debug Component
 URL:		http://framework.zend.com/manual/2.4/en/index.html
 Requires:	%{name} = %{version}-%{release}
 Suggests:	%{name}-Escaper = %{version}-%{release}
+Suggests:	php(pcre)
 
 %description Debug
 %{summary}
@@ -243,6 +277,9 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Code = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
 Suggests:	%{name}-ServiceManager = %{version}-%{release}
+Suggests:	php(pcre)
+Suggests:	php(reflection)
+Suggests:	php(spl)
 
 %description Di
 Dependency Injection (here-in called DI) is a concept that has been
@@ -258,6 +295,10 @@ injected into MovieLister.
 Summary:	Zend Framework 2: DOM Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.dom.intro.html
 Requires:	%{name} = %{version}-%{release}
+Suggests:	php(dom)
+Suggests:	php(pcre)
+Suggests:	php(spl)
+Suggests:	php(xml)
 
 %description Dom
 The Zend\Dom component provides tools for working with DOM documents
@@ -269,6 +310,11 @@ CSS selectors.
 Summary:	Zend Framework 2: Escaper Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.escaper.introduction.html
 Requires:	%{name} = %{version}-%{release}
+Suggests:	php(ctype)
+Suggests:	php(iconv)
+Suggests:	php(mbstring)
+Suggests:	php(pcre)
+Suggests:	php(spl)
 
 %description Escaper
 The OWASP Top 10 web security risks study lists Cross-Site Scripting
@@ -283,6 +329,7 @@ Summary:	Zend Framework 2: EventManager Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.event-manager.event-manager.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
+Suggests:	php(spl)
 
 %description EventManager
 The EventManager is a component designed for the following use cases:
@@ -306,6 +353,14 @@ Suggests:	%{name}-Db = %{version}-%{release}
 Suggests:	%{name}-Http = %{version}-%{release}
 Suggests:	%{name}-ServiceManager = %{version}-%{release}
 Suggests:	%{name}-Validator = %{version}-%{release}
+Suggests:	php(ctype)
+Suggests:	php(date)
+Suggests:	php(dom)
+Suggests:	php(hash)
+Suggests:	php(pcre)
+Suggests:	php(spl)
+Suggests:	php(tidy)
+Suggests:	php(xml)
 
 %description Feed
 Zend\Feed provides functionality for consuming RSS and Atom feeds. It
@@ -330,6 +385,11 @@ Requires:	%{name}-Stdlib = %{version}-%{release}
 Suggests:	%{name}-Filter = %{version}-%{release}
 Suggests:	%{name}-I18n = %{version}-%{release}
 Suggests:	%{name}-Validator = %{version}-%{release}
+Suggests:	php(fileinfo)
+Suggests:	php(hash)
+Suggests:	php(pcre)
+Suggests:	php(spl)
+Suggests:	php(tokenizer)
 
 %description File
 %{summary}
@@ -343,6 +403,16 @@ Suggests:	%{name}-Crypt = %{version}-%{release}
 Suggests:	%{name}-I18n = %{version}-%{release}
 Suggests:	%{name}-Servicemanager = %{version}-%{release}
 Suggests:	%{name}-Uri = %{version}-%{release}
+Suggests:	php(bz2)
+Suggests:	php(date)
+Suggests:	php(iconv)
+Suggests:	php(lzf)
+Suggests:	php(mbstring)
+Suggests:	php(openssl)
+Suggests:	php(pcre)
+Suggests:	php(spl)
+Suggests:	php(zip)
+Suggests:	php(zlib)
 
 %description Filter
 The Zend\Filter component provides a set of commonly needed data
@@ -364,6 +434,11 @@ Suggests:	%{name}-I18n = %{version}-%{release}
 Suggests:	%{name}-ServiceManager = %{version}-%{release}
 Suggests:	%{name}-Validator = %{version}-%{release}
 Suggests:	%{name}-View = %{version}-%{release}
+Suggests:	php(date)
+Suggests:	php(intl)
+Suggests:	php(pcre)
+Suggests:	php(reflection)
+Suggests:	php(spl)
 
 %description Form
 Zend\Form is intended primarily as a bridge between your domain models
@@ -388,6 +463,14 @@ Requires:	%{name}-Loader = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
 Requires:	%{name}-Uri = %{version}-%{release}
 Requires:	%{name}-Validator = %{version}-%{release}
+Suggests:	php(ctype)
+Suggests:	php(curl)
+Suggests:	php(date)
+Suggests:	php(fileinfo)
+Suggests:	php(openssl)
+Suggests:	php(pcre)
+Suggests:	php(spl)
+Suggests:	php(zlib)
 
 %description Http
 Zend\Http is a primary foundational component of Zend Framework. Since
@@ -416,6 +499,10 @@ Suggests:	%{name}-Filter = %{version}-%{release}
 Suggests:	%{name}-ServiceManager = %{version}-%{release}
 Suggests:	%{name}-Validator = %{version}-%{release}
 Suggests:	%{name}-View = %{version}-%{release}
+Suggests:	php(ctype)
+Suggests:	php(date)
+Suggests:	php(pcre)
+Suggests:	php(spl)
 
 %description I18n
 ZendI18n comes with a complete translation suite which supports all
@@ -436,6 +523,7 @@ Requires:	%{name}-Filter = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
 Requires:	%{name}-Validator = %{version}-%{release}
 Suggests:	%{name}-ServiceManager = %{version}-%{release}
+Suggests:	php(spl)
 
 %description InputFilter
 The Zend\InputFilter component can be used to filter and validate
@@ -450,6 +538,11 @@ Requires:	%{name}-Stdlib = %{version}-%{release}
 Suggests:	%{name}-Http = %{version}-%{release}
 Suggests:	%{name}-Server = %{version}-%{release}
 Suggests:	%{name}-Zendxml = %{version}-%{release}
+Suggests:	php(json)
+Suggests:	php(mbstring)
+Suggests:	php(pcre)
+Suggests:	php(reflection)
+Suggests:	php(spl)
 
 %description Json
 Zend\Json provides convenience methods for serializing native PHP to
@@ -476,6 +569,13 @@ URL:		http://framework.zend.com/manual/2.4/en/modules/zend.ldap.introduction.htm
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
 Suggests:	%{name}-EventManager = %{version}-%{release}
+Suggests:	php(date)
+Suggests:	php(iconv)
+Suggests:	php(json)
+Suggests:	php(ldap)
+Suggests:	php(mbstring)
+Suggests:	php(pcre)
+Suggests:	php(spl)
 
 %description Ldap
 Zend\Ldap\Ldap is a class for performing LDAP operations including but
@@ -486,6 +586,10 @@ directory.
 Summary:	Zend Framework 2: Loader Component
 URL:		http://framework.zend.com/manual/2.4/en/index.html#zend-loader
 Requires:	%{name} = %{version}-%{release}
+Suggests:	php(bz2)
+Suggests:	php(pcre)
+Suggests:	php(reflection)
+Suggests:	php(spl)
 
 %description Loader
 %{summary}
@@ -501,6 +605,11 @@ Suggests:	%{name}-Db = %{version}-%{release}
 Suggests:	%{name}-Escaper = %{version}-%{release}
 Suggests:	%{name}-Mail = %{version}-%{release}
 Suggests:	%{name}-Validator = %{version}-%{release}
+Suggests:	php(date)
+Suggests:	php(dom)
+Suggests:	php(json)
+Suggests:	php(pcre)
+Suggests:	php(spl)
 
 %description Log
 Zend\Log\Logger is a component for general purpose logging. It
@@ -533,6 +642,11 @@ Requires:	%{name}-Mime = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
 Requires:	%{name}-Validator = %{version}-%{release}
 Suggests:	%{name}-ServiceManager = %{version}-%{release}
+Suggests:	php(ctype)
+Suggests:	php(date)
+Suggests:	php(iconv)
+Suggests:	php(pcre)
+Suggests:	php(spl)
 
 %description Mail
 Zend\Mail provides generalized functionality to compose and send both
@@ -547,6 +661,10 @@ Summary:	Zend Framework 2: Math Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.math.introduction.html
 Requires:	%{name} = %{version}-%{release}
 Suggests:	%{name}-ServiceManager = %{version}-%{release}
+Suggests:	php(mcrypt)
+Suggests:	php(openssl)
+Suggests:	php(pcre)
+Suggests:	php(spl)
 
 %description Math
 Zend\Math namespace provides general mathematical functions. So far
@@ -562,6 +680,7 @@ Summary:	Zend Framework 2: Memory Component
 URL:		http://framework.zend.com/manual/2.4/en/index.html
 Requires:	%{name} = %{version}-%{release}
 Suggests:	%{name}-Cache = %{version}-%{release}
+Suggests:	php(spl)
 
 %description Memory
 %{summary}
@@ -572,6 +691,9 @@ URL:		http://framework.zend.com/manual/2.4/en/modules/zend.mime.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
 Suggests:	%{name}-Mail = %{version}-%{release}
+Suggests:	php(iconv)
+Suggests:	php(pcre)
+Suggests:	php(spl)
 
 %description Mime
 Zend\Mime\Mime is a support class for handling multipart MIME
@@ -590,6 +712,7 @@ Suggests:	%{name}-Config = %{version}-%{release}
 Suggests:	%{name}-Console = %{version}-%{release}
 Suggests:	%{name}-Loader = %{version}-%{release}
 Suggests:	%{name}-ServiceManager = %{version}-%{release}
+Suggests:	php(spl)
 
 %description ModuleManager
 Zend Framework 2.0 introduces a new and powerful approach to modules.
@@ -624,6 +747,10 @@ Suggests:	%{name}-Uri = %{version}-%{release}
 Suggests:	%{name}-Validator = %{version}-%{release}
 Suggests:	%{name}-Version = %{version}-%{release}
 Suggests:	%{name}-View = %{version}-%{release}
+Suggests:	php(intl)
+Suggests:	php(pcre)
+Suggests:	php(reflection)
+Suggests:	php(spl)
 
 %description Mvc
 Zend\Mvc is a brand new MVC implementation designed from the ground up
@@ -652,6 +779,8 @@ Suggests:	%{name}-Mvc = %{version}-%{release}
 Suggests:	%{name}-Permissions-Acl = %{version}-%{release}
 Suggests:	%{name}-ServiceManager = %{version}-%{release}
 Suggests:	%{name}-View = %{version}-%{release}
+Suggests:	php(pcre)
+Suggests:	php(spl)
 
 %description Navigation
 Zend\Navigation is a component for managing trees of pointers to web
@@ -670,6 +799,8 @@ Suggests:	%{name}-filter = %{version}-%{release}
 Suggests:	%{name}-json = %{version}-%{release}
 Suggests:	%{name}-servicemanager = %{version}-%{release}
 Suggests:	%{name}-view = %{version}-%{release}
+Suggests:	php(reflection)
+Suggests:	php(spl)
 
 %description Paginator
 Zend\Paginator is a flexible component for paginating collections of
@@ -690,6 +821,7 @@ Summary:	Zend Framework 2: Permissions ACL Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.permissions.acl.intro.html
 Requires:	%{name} = %{version}-%{release}
 Suggests:	%{name}-ServiceManager = %{version}-%{release}
+Suggests:	php(spl)
 
 %description Permissions-Acl
 The Zend\Permissions\Acl component provides a lightweight and flexible
@@ -714,6 +846,7 @@ control how roles are granted access to resources.
 Summary:	Zend Framework 2: Permissions RBAC Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.permissions.rbac.intro.html
 Requires:	%{name} = %{version}-%{release}
+Suggests:	php(spl)
 
 %description Permissions-Rbac
 The Zend\Permissions\Rbac component provides a lightweight role-based
@@ -729,6 +862,10 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
 Suggests:	%{name}-Json = %{version}-%{release}
 Suggests:	%{name}-Session = %{version}-%{release}
+Suggests:	php(apc)
+Suggests:	php(date)
+Suggests:	php(pcre)
+Suggests:	php(spl)
 
 %description ProgressBar
 Zend\ProgressBar is a component to create and update progress bars in
@@ -746,6 +883,12 @@ Requires:	%{name}-Json = %{version}-%{release}
 Requires:	%{name}-Math = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
 Suggests:	%{name}-ServiceManager = %{version}-%{release}
+Suggests:	php(dom)
+Suggests:	php(igbinary)
+Suggests:	php(pcre)
+Suggests:	php(simplexml)
+Suggests:	php(spl)
+Suggests:	php(xml)
 
 %description Serializer
 The Zend\Serializer component provides an adapter based interface to
@@ -760,6 +903,9 @@ URL:		http://framework.zend.com/manual/2.4/en/modules/zend.server.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Code = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
+Suggests:	php(pcre)
+Suggests:	php(reflection)
+Suggests:	php(spl)
 
 %description Server
 The Zend\Server family of classes provides functionality for the
@@ -778,6 +924,8 @@ Summary:	Zend Framework 2: ServiceManager Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.service-manager.intro.html
 Requires:	%{name} = %{version}-%{release}
 Suggests:	%{name}-Di = %{version}-%{release}
+Suggests:	php(reflection)
+Suggests:	php(spl)
 
 %description ServiceManager
 The Service Locator design pattern is implemented by the
@@ -795,6 +943,11 @@ Suggests:	%{name}-Db = %{version}-%{release}
 Suggests:	%{name}-Http = %{version}-%{release}
 Suggests:	%{name}-ServiceManager = %{version}-%{release}
 Suggests:	%{name}-Validator = %{version}-%{release}
+Suggests:	php(date)
+Suggests:	php(hash)
+Suggests:	php(pcre)
+Suggests:	php(session)
+Suggests:	php(spl)
 
 %description Session
 Manage and preserve session data, a logical complement of cookie data,
@@ -810,6 +963,14 @@ Requires:	%{name}-Server = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
 Requires:	%{name}-Uri = %{version}-%{release}
 Suggests:	%{name}-Http = %{version}-%{release}
+Suggests:	php(curl)
+Suggests:	php(dom)
+Suggests:	php(pcre)
+Suggests:	php(reflection)
+Suggests:	php(simplexml)
+Suggests:	php(soap)
+Suggests:	php(spl)
+Suggests:	php(xml)
 
 %description Soap
 %{summary}
@@ -822,6 +983,14 @@ Suggests:	%{name}-EventManager = %{version}-%{release}
 Suggests:	%{name}-Filter = %{version}-%{release}
 Suggests:	%{name}-Serializer = %{version}-%{release}
 Suggests:	%{name}-ServiceManager = %{version}-%{release}
+Suggests:	php(date)
+Suggests:	php(iconv)
+Suggests:	php(intl)
+Suggests:	php(json)
+Suggests:	php(mbstring)
+Suggests:	php(pcre)
+Suggests:	php(reflection)
+Suggests:	php(spl)
 
 %description Stdlib
 %{summary}
@@ -833,6 +1002,8 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Escaper = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
 Suggests:	%{name}-ServiceManager = %{version}-%{release}
+Suggests:	php(pcre)
+Suggests:	php(spl)
 
 %description Tag
 Zend\Tag is a component suite which provides a facility to work with
@@ -864,6 +1035,8 @@ Requires:	%{name}-ServiceManager = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
 Requires:	%{name}-Uri = %{version}-%{release}
 Requires:	%{name}-View = %{version}-%{release}
+Suggests:	php(pcre)
+Suggests:	php(spl)
 
 %description Test
 The Zend\Test component provides tools to facilitate unit testing of
@@ -878,6 +1051,9 @@ URL:		http://framework.zend.com/manual/2.4/en/index.html#zend-text
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-ServiceManager = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
+Suggests:	php(ctype)
+Suggests:	php(pcre)
+Suggests:	php(spl)
 
 ### TODO: Is Zend/Text/Figlet/zend-framework.flf allowed?
 
@@ -890,6 +1066,8 @@ URL:		http://framework.zend.com/manual/2.4/en/modules/zend.uri.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Escaper = %{version}-%{release}
 Requires:	%{name}-Validator = %{version}-%{release}
+Suggests:	php(pcre)
+Suggests:	php(spl)
 
 %description Uri
 Zend\Uri is a component that aids in manipulating and validating
@@ -917,6 +1095,12 @@ Suggests:	%{name}-Math = %{version}-%{release}
 Suggests:	%{name}-ServiceManager = %{version}-%{release}
 Suggests:	%{name}-Session = %{version}-%{release}
 Suggests:	%{name}-Uri = %{version}-%{release}
+Suggests:	php(ctype)
+Suggests:	php(date)
+Suggests:	php(fileinfo)
+Suggests:	php(hash)
+Suggests:	php(pcre)
+Suggests:	php(spl)
 
 %description Validator
 The Zend\Validator component provides a set of commonly needed
@@ -930,6 +1114,8 @@ URL:		http://framework.zend.com/manual/2.4/en/modules/zend.version.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Json = %{version}-%{release}
 Suggests:	%{name}-Http = %{version}-%{release}
+Suggests:	php(pcre)
+Suggests:	php(spl)
 
 %description Version
 Zend\Version provides a class constant Zend\Version\Version::VERSION
@@ -963,6 +1149,11 @@ Suggests:	%{name}-Paginator = %{version}-%{release}
 Suggests:	%{name}-Permissions-Acl = %{version}-%{release}
 Suggests:	%{name}-ServiceManager = %{version}-%{release}
 Suggests:	%{name}-Uri = %{version}-%{release}
+Suggests:	php(date)
+Suggests:	php(dom)
+Suggests:	php(filter)
+Suggests:	php(pcre)
+Suggests:	php(spl)
 
 %description View
 Zend\View provides the "View' layer of Zend Framework 2's MVC system.
@@ -979,6 +1170,15 @@ Requires:	%{name}-Server = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
 Requires:	%{name}-ZendXml = %{version}-%{release}
 Suggests:	%{name}-Cache = %{version}-%{release}
+Suggests:	php(date)
+Suggests:	php(dom)
+Suggests:	php(iconv)
+Suggests:	php(pcre)
+Suggests:	php(reflection)
+Suggests:	php(simplexml)
+Suggests:	php(spl)
+Suggests:	php(xml)
+Suggests:	php(xmlwriter)
 
 %description XmlRpc
 From its home page, XML-RPC is described as a '...remote procedure
@@ -995,6 +1195,10 @@ services and building new XML-RPC servers.
 Summary:	Zend Framework 2: XML usage, best practices, and security in PHP
 URL:		https://github.com/zendframework/ZendXml
 Requires:	%{name} = %{version}-%{release}
+Suggests:	php(dom)
+Suggests:	php(simplexml)
+Suggests:	php(spl)
+Suggests:	php(xml)
 
 %description ZendXml
 This is a security component to prevent XML eXternal Entity (XXE) and
