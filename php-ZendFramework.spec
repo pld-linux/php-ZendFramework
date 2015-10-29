@@ -8,7 +8,7 @@
 Summary:	Zend Framework 2
 Name:		php-ZendFramework
 Version:	2.4.8
-Release:	0.1
+Release:	0.2
 License:	BSD
 Group:		Development/Libraries
 Source0:	https://packages.zendframework.com/releases/ZendFramework-%{version}/ZendFramework-%{version}.tgz
@@ -35,10 +35,11 @@ namely namespaces, late static binding, lambda functions and closures.
 Zend Framework 2 evolved from Zend Framework 1, a successful PHP
 framework with over 15 million downloads.
 
-%package  Authentication
+%package Authentication
 Summary:	Zend Framework 2: Authentication Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.authentication.intro.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
 
 %description Authentication
 The Zend\Authentication component provides an API for authentication
@@ -55,10 +56,12 @@ Zend\Authentication. For more information about authorization and
 access control with Zend Framework, please see the
 Zend\Permissions\Acl or Zend\Permissions\Rbac component.
 
-%package  Barcode
+%package Barcode
 Summary:	Zend Framework 2: Barcode Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.barcode.intro.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
+Requires:	%{name}-Validator = %{version}-%{release}
 
 %description Barcode
 Zend\Barcode\Barcode provides a generic way to generate barcodes. The
@@ -67,10 +70,14 @@ objects and renderers. Objects allow you to create barcodes
 independently of the renderer. Renderer allow you to draw barcodes
 based on the support required.
 
-%package  Cache
+%package Cache
 Summary:	Zend Framework 2: Cache Component
 URL:		http://framework.zend.com/manual/2.4/en/index.html#zend-cache
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-EventManager = %{version}-%{release}
+Requires:	%{name}-Serializer = %{version}-%{release}
+Requires:	%{name}-ServiceManager = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
 
 %description Cache
 %{summary}
@@ -84,10 +91,12 @@ Optional:
 - Redis (php-pecl-redis)
 - XCache (php-xcache)
 
-%package  Captcha
+%package Captcha
 Summary:	Zend Framework 2: CAPTCHA Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.captcha.intro.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Math = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
 
 %description Captcha
 CAPTCHA stands for "Completely Automated Public Turing test to tell
@@ -103,19 +112,21 @@ asking how they relate. The Zend\Captcha component aims to provide a
 variety of back ends that may be utilized either standalone or in
 conjunction with the Zend\Form component.
 
-%package  Code
+%package Code
 Summary:	Zend Framework 2: Code Component
 URL:		http://framework.zend.com/manual/2.4/en/index.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-EventManager = %{version}-%{release}
 
 %description Code
 Provides facilities to generate arbitrary code using an object
 oriented interface.
 
-%package  Config
+%package Config
 Summary:	Zend Framework 2: Config Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.config.introduction.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
 
 %description Config
 Zend\Config is designed to simplify access to configuration data
@@ -126,10 +137,11 @@ supporting hierarchical data storage. Currently, Zend\Config provides
 adapters that read and write configuration data stored in .ini, JSON,
 YAML and XML files.
 
-%package  Console
+%package Console
 Summary:	Zend Framework 2: Console Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.console.introduction.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
 
 %description Console
 Zend Framework 2 features built-in console support.
@@ -153,10 +165,13 @@ controller to handle the request.
 - Console prompts can be used to interact with the user by asking him
   questions and retrieving input.
 
-%package  Crypt
+%package Crypt
 Summary:	Zend Framework 2: Crypt Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.crypt.introduction.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Math = %{version}-%{release}
+Requires:	%{name}-ServiceManager = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
 
 %description Crypt
 Zend\Crypt provides support of some cryptographic tools. The available
@@ -179,10 +194,11 @@ protect and authenticate sensitive data in PHP. Because the use of
 cryptography is not so easy we recommend to use the Zend\Crypt
 component only if you have a minimum background on this topic.
 
-%package  Db
+%package Db
 Summary:	Zend Framework 2: DB Component
 URL:		http://framework.zend.com/manual/2.4/en/index.html#zend-db
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
 
 %description Db
 %{summary}
@@ -194,20 +210,23 @@ Optional:
 - pgsql (php-pgsql)
 - sqlsrv (http://pecl.php.net/package/sqlsrv)
 
-%package  Debug
+%package Debug
 Summary:	Zend Framework 2: Debug Component
 URL:		http://framework.zend.com/manual/2.4/en/index.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Escaper = %{version}-%{release}
 
 %description Debug
 %{summary}
 
 Optional: XDebug (php-pecl-xdebug)
 
-%package  Di
+%package Di
 Summary:	Zend Framework 2: DI Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.di.introduction.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Code = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
 
 %description Di
 Dependency Injection (here-in called DI) is a concept that has been
@@ -219,7 +238,7 @@ $b = new MovieLister(new MovieFinder());
 Above, MovieFinder is a dependency of MovieLister, and MovieFinder was
 injected into MovieLister.
 
-%package  Dom
+%package Dom
 Summary:	Zend Framework 2: DOM Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.dom.intro.html
 Requires:	%{name} = %{version}-%{release}
@@ -230,7 +249,7 @@ and structures. Currently, we offer Zend\Dom\Query, which provides a
 unified interface for querying DOM documents utilizing both XPath and
 CSS selectors.
 
-%package  Escaper
+%package Escaper
 Summary:	Zend Framework 2: Escaper Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.escaper.introduction.html
 Requires:	%{name} = %{version}-%{release}
@@ -243,10 +262,11 @@ Zend\Escaper component was written. It offers developers a way to
 escape output and defend from XSS and related vulnerabilities by
 introducing contextual escaping based on peer-reviewed rules.
 
-%package  EventManager
+%package EventManager
 Summary:	Zend Framework 2: EventManager Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.event-manager.event-manager.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
 
 %description EventManager
 The EventManager is a component designed for the following use cases:
@@ -259,10 +279,12 @@ The basic architecture allows you to attach and detach listeners to
 named events, both on a per-instance basis as well as via shared
 collections; trigger events; and interrupt execution of listeners.
 
-%package  Feed
+%package Feed
 Summary:	Zend Framework 2: Feed Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.feed.introduction.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Escaper = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
 
 %description Feed
 Zend\Feed provides functionality for consuming RSS and Atom feeds. It
@@ -279,18 +301,20 @@ Zend\Feed\Reader and Zend\Feed\Writer support extensions which allows
 for working with additional data in feeds, not covered in the core API
 but used in conjunction with RSS and Atom feeds.
 
-%package  File
+%package File
 Summary:	Zend Framework 2: File Component
 URL:		http://framework.zend.com/manual/2.4/en/index.html#zend-file
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
 
 %description File
 %{summary}
 
-%package  Filter
+%package Filter
 Summary:	Zend Framework 2: Filter Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.filter.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
 
 %description Filter
 The Zend\Filter component provides a set of commonly needed data
@@ -298,10 +322,12 @@ filters. It also provides a simple filter chaining mechanism by which
 multiple filters may be applied to a single datum in a user-defined
 order.
 
-%package  Form
+%package Form
 Summary:	Zend Framework 2: Form Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.form.intro.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-InputFilter = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
 
 %description Form
 Zend\Form is intended primarily as a bridge between your domain models
@@ -318,10 +344,14 @@ The Zend\Form component consists of the following objects:
   data and object binding, and compose InputFilters. Data binding is
   done via ZendStdlibHydrator.
 
-%package  Http
+%package Http
 Summary:	Zend Framework 2: HTTP Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.http.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Loader = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
+Requires:	%{name}-Uri = %{version}-%{release}
+Requires:	%{name}-Validator = %{version}-%{release}
 
 %description Http
 Zend\Http is a primary foundational component of Zend Framework. Since
@@ -338,10 +368,11 @@ things HTTP. In nutshell, there are several parts of Zend\Http:
 - A Client implementation with various adapters that allow for sending
   requests and introspecting responses.
 
-%package  I18n
+%package I18n
 Summary:	Zend Framework 2: i18n Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.i18n.translating.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
 
 %description I18n
 ZendI18n comes with a complete translation suite which supports all
@@ -354,20 +385,24 @@ The translator itself is initialized without any parameters, as any
 configuration to it is optional. A translator without any translations
 will actually do nothing but just return the given message IDs.
 
-%package  InputFilter
+%package InputFilter
 Summary:	Zend Framework 2: InputFilter Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.input-filter.intro.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Filter = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
+Requires:	%{name}-Validator = %{version}-%{release}
 
 %description InputFilter
 The Zend\InputFilter component can be used to filter and validate
 generic sets of input data. For instance, you could use it to filter
 $_GET or $_POST values, CLI arguments, etc.
 
-%package  Json
+%package Json
 Summary:	Zend Framework 2: JSON Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.json.introduction.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
 
 %description Json
 Zend\Json provides convenience methods for serializing native PHP to
@@ -388,17 +423,18 @@ unnecessary XML parsing in the browser-side applications. It offers a
 nice utility function that results in easier application-specific data
 processing techniques.
 
-%package  Ldap
+%package Ldap
 Summary:	Zend Framework 2: LDAP Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.ldap.introduction.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
 
 %description Ldap
 Zend\Ldap\Ldap is a class for performing LDAP operations including but
 not limited to binding, searching and modifying entries in an LDAP
 directory.
 
-%package  Loader
+%package Loader
 Summary:	Zend Framework 2: Loader Component
 URL:		http://framework.zend.com/manual/2.4/en/index.html#zend-loader
 Requires:	%{name} = %{version}-%{release}
@@ -406,10 +442,12 @@ Requires:	%{name} = %{version}-%{release}
 %description Loader
 %{summary}
 
-%package  Log
+%package Log
 Summary:	Zend Framework 2: Log Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.log.overview.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-ServiceManager = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
 
 %description Log
 Zend\Log\Logger is a component for general purpose logging. It
@@ -432,10 +470,15 @@ into the following objects:
 
 Optional: MongoDB (php-pecl-mongo)
 
-%package  Mail
+%package Mail
 Summary:	Zend Framework 2: Mail Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.mail.introduction.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Crypt = %{version}-%{release}
+Requires:	%{name}-Loader = %{version}-%{release}
+Requires:	%{name}-Mime = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
+Requires:	%{name}-Validator = %{version}-%{release}
 
 %description Mail
 Zend\Mail provides generalized functionality to compose and send both
@@ -445,10 +488,11 @@ the Mail\Transport\File transport. Of course, you can also implement
 your own transport by implementing the
 Mail\Transport\TransportInterface.
 
-%package  Math
+%package Math
 Summary:	Zend Framework 2: Math Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.math.introduction.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-ServiceManager = %{version}-%{release}
 
 %description Math
 Zend\Math namespace provides general mathematical functions. So far
@@ -459,18 +503,20 @@ the supported functionalities are:
 
 Optional: php-gmp
 
-%package  Memory
+%package Memory
 Summary:	Zend Framework 2: Memory Component
 URL:		http://framework.zend.com/manual/2.4/en/index.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Cache = %{version}-%{release}
 
 %description Memory
 %{summary}
 
-%package  Mime
+%package Mime
 Summary:	Zend Framework 2: MIME Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.mime.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
 
 %description Mime
 Zend\Mime\Mime is a support class for handling multipart MIME
@@ -479,10 +525,12 @@ used by applications requiring MIME support.
 
 Optional: %{name}-Mail
 
-%package  ModuleManager
+%package ModuleManager
 Summary:	Zend Framework 2: ModuleManager Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.module-manager.intro.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-EventManager = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
 
 %description ModuleManager
 Zend Framework 2.0 introduces a new and powerful approach to modules.
@@ -491,10 +539,14 @@ re-usability in mind. A module may contain just about anything: PHP
 code, including MVC functionality; library code; view scripts; and/or
 public assets such as images, CSS, and JavaScript.
 
-%package  Mvc
+%package Mvc
 Summary:	Zend Framework 2: MVC Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.mvc.intro.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-EventManager = %{version}-%{release}
+Requires:	%{name}-Form = %{version}-%{release}
+Requires:	%{name}-ServiceManager = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
 
 %description Mvc
 Zend\Mvc is a brand new MVC implementation designed from the ground up
@@ -513,10 +565,11 @@ The MVC layer is built on top of the following components:
 - Zend\Stdlib\DispatchableInterface. All "controllers' are simply
   dispatchable objects.
 
-%package  Navigation
+%package Navigation
 Summary:	Zend Framework 2: Navigation Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.navigation.intro.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
 
 %description Navigation
 Zend\Navigation is a component for managing trees of pointers to web
@@ -524,10 +577,11 @@ pages. Simply put: It can be used for creating menus, breadcrumbs,
 links, and sitemaps, or serve as a model for other navigation related
 purposes.
 
-%package  Paginator
+%package Paginator
 Summary:	Zend Framework 2: Paginator Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.paginator.introduction.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
 
 %description Paginator
 Zend\Paginator is a flexible component for paginating collections of
@@ -543,7 +597,7 @@ The primary design goals of Zend\Paginator are as follows:
   that users who wish to use it independently of Zend\View, Zend\Db,
   etc. can do so
 
-%package  Permissions-Acl
+%package Permissions-Acl
 Summary:	Zend Framework 2: Permissions ACL Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.permissions.acl.intro.html
 Requires:	%{name} = %{version}-%{release}
@@ -567,7 +621,7 @@ the car may not be granted to everyone.
 Through the specification and use of an ACL, an application may
 control how roles are granted access to resources.
 
-%package  Permissions-Rbac
+%package Permissions-Rbac
 Summary:	Zend Framework 2: Permissions RBAC Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.permissions.rbac.intro.html
 Requires:	%{name} = %{version}-%{release}
@@ -579,10 +633,11 @@ RecursiveIterator and RecursiveIteratorIterator. RBAC differs from
 access control lists (ACL) by putting the emphasis on roles and their
 permissions rather than objects (resources).
 
-%package  ProgressBar
+%package ProgressBar
 Summary:	Zend Framework 2: ProgressBar Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.progress-bar.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
 
 %description ProgressBar
 Zend\ProgressBar is a component to create and update progress bars in
@@ -592,10 +647,13 @@ takes an absolute value and optionally a status message, and then
 calls the adapter with some precalculated values like percentage and
 estimated time left.
 
-%package  Serializer
+%package Serializer
 Summary:	Zend Framework 2: Serializer Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.serializer.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Json = %{version}-%{release}
+Requires:	%{name}-Math = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
 
 %description Serializer
 The Zend\Serializer component provides an adapter based interface to
@@ -604,10 +662,12 @@ facilities, and recover.
 
 Optional: msgpack (php-pecl-msgpack)
 
-%package  Server
+%package Server
 Summary:	Zend Framework 2: Server Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.server.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Code = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
 
 %description Server
 The Zend\Server family of classes provides functionality for the
@@ -621,7 +681,7 @@ performing function and class introspection for use as callbacks with
 the server classes, and provides data suitable for use with
 Zend\Server\Server's getFunctions() and loadFunctions() methods.
 
-%package  ServiceManager
+%package ServiceManager
 Summary:	Zend Framework 2: ServiceManager Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.service-manager.intro.html
 Requires:	%{name} = %{version}-%{release}
@@ -631,10 +691,12 @@ The Service Locator design pattern is implemented by the
 Zend\ServiceManager component. The Service Locator is a service/object
 locator, tasked with retrieving other objects.
 
-%package  Session
+%package Session
 Summary:	Zend Framework 2: Session Component
 URL:		http://framework.zend.com/manual/2.4/en/index.html#zend-session
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-EventManager = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
 
 %description Session
 Manage and preserve session data, a logical complement of cookie data,
@@ -642,26 +704,35 @@ across multiple page requests by the same client.
 
 Optional: MongoDB (php-pecl-mongo)
 
-%package  Soap
+%package Soap
 Summary:	Zend Framework 2: SOAP Component
 URL:		http://framework.zend.com/manual/2.4/en/index.html#zend-soap
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Server = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
+Requires:	%{name}-Uri = %{version}-%{release}
 
 %description Soap
 %{summary}
 
-%package  Stdlib
+%package Stdlib
 Summary:	Zend Framework 2: Stdlib Component
 URL:		http://framework.zend.com/manual/2.4/en/index.html#zend-stdlib
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-EventManager = %{version}-%{release}
+Requires:	%{name}-Filter = %{version}-%{release}
+Requires:	%{name}-Serializer = %{version}-%{release}
+Requires:	%{name}-ServiceManager = %{version}-%{release}
 
 %description Stdlib
 %{summary}
 
-%package  Tag
+%package Tag
 Summary:	Zend Framework 2: Tag Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.tag.introduction.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Escaper = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
 
 %description Tag
 Zend\Tag is a component suite which provides a facility to work with
@@ -680,10 +751,19 @@ To group multiple items together, Zend\Tag\ItemList exists as an array
 iterator and provides additional functionality to calculate absolute
 weight values based on the given relative weights of each item in it.
 
-%package  Test
+%package Test
 Summary:	Zend Framework 2: Test Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.test.introduction.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Console = %{version}-%{release}
+Requires:	%{name}-Dom = %{version}-%{release}
+Requires:	%{name}-EventManager = %{version}-%{release}
+Requires:	%{name}-Http = %{version}-%{release}
+Requires:	%{name}-Mvc = %{version}-%{release}
+Requires:	%{name}-ServiceManager = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
+Requires:	%{name}-Uri = %{version}-%{release}
+Requires:	%{name}-View = %{version}-%{release}
 
 %description Test
 The Zend\Test component provides tools to facilitate unit testing of
@@ -692,20 +772,24 @@ enable testing of your Zend Framework MVC applications.
 
 PHPUnit is the only library supported currently.
 
-%package  Text
+%package Text
 Summary:	Zend Framework 2: Text Component
 URL:		http://framework.zend.com/manual/2.4/en/index.html#zend-text
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-ServiceManager = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
 
 ### TODO: Is Zend/Text/Figlet/zend-framework.flf allowed?
 
 %description Text
 %{summary}
 
-%package  Uri
+%package Uri
 Summary:	Zend Framework 2: URI Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.uri.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Escaper = %{version}-%{release}
+Requires:	%{name}-Validator = %{version}-%{release}
 
 %description Uri
 Zend\Uri is a component that aids in manipulating and validating
@@ -721,10 +805,11 @@ if such a class is registered with the Factory.
 
 [1] http://www.ietf.org/rfc/rfc3986.txt
 
-%package  Validator
+%package Validator
 Summary:	Zend Framework 2: Validator Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.validator.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
 
 %description Validator
 The Zend\Validator component provides a set of commonly needed
@@ -732,10 +817,11 @@ validators. It also provides a simple validator chaining mechanism by
 which multiple validators may be applied to a single datum in a
 user-defined order.
 
-%package  Version
+%package Version
 Summary:	Zend Framework 2: Version Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.version.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Json = %{version}-%{release}
 
 %description Version
 Zend\Version provides a class constant Zend\Version\Version::VERSION
@@ -749,20 +835,28 @@ the specified version is older than the installed Zend Framework
 version, 0 if they are the same and +1 if the specified version is
 newer than the version of the Zend Framework installation.
 
-%package  View
+%package View
 Summary:	Zend Framework 2: View Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.view.quick-start.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-EventManager = %{version}-%{release}
+Requires:	%{name}-Loader = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
 
 %description View
 Zend\View provides the "View' layer of Zend Framework 2's MVC system.
 It is a multi-tiered system allowing a variety of mechanisms for
 extension, substitution, and more.
 
-%package  XmlRpc
+%package XmlRpc
 Summary:	Zend Framework 2: XML-RPC Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.xmlrpc.intro.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Http = %{version}-%{release}
+Requires:	%{name}-Math = %{version}-%{release}
+Requires:	%{name}-Server = %{version}-%{release}
+Requires:	%{name}-Stdlib = %{version}-%{release}
+Requires:	%{name}-ZendXml = %{version}-%{release}
 
 %description XmlRpc
 From its home page, XML-RPC is described as a '...remote procedure
@@ -775,7 +869,7 @@ services and building new XML-RPC servers.
 
 [1] http://www.xmlrpc.com/
 
-%package  ZendXml
+%package ZendXml
 Summary:	Zend Framework 2: XML usage, best practices, and security in PHP
 URL:		https://github.com/zendframework/ZendXml
 Requires:	%{name} = %{version}-%{release}
