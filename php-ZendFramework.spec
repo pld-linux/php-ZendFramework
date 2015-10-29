@@ -9,7 +9,7 @@
 Summary:	Zend Framework 2
 Name:		php-ZendFramework
 Version:	2.4.8
-Release:	0.3
+Release:	0.4
 License:	BSD
 Group:		Development/Libraries
 Source0:	https://packages.zendframework.com/releases/ZendFramework-%{version}/ZendFramework-%{version}.tgz
@@ -63,6 +63,7 @@ URL:		http://framework.zend.com/manual/2.4/en/modules/zend.barcode.intro.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
 Requires:	%{name}-Validator = %{version}-%{release}
+Suggests:	%{name}-ServiceManager = %{version}-%{release}
 
 %description Barcode
 Zend\Barcode\Barcode provides a generic way to generate barcodes. The
@@ -79,6 +80,7 @@ Requires:	%{name}-EventManager = %{version}-%{release}
 Requires:	%{name}-Serializer = %{version}-%{release}
 Requires:	%{name}-ServiceManager = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
+Suggests:	%{name}-Session = %{version}-%{release}
 
 %description Cache
 %{summary}
@@ -98,6 +100,9 @@ URL:		http://framework.zend.com/manual/2.4/en/modules/zend.captcha.intro.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Math = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
+Suggests:	%{name}-Session = %{version}-%{release}
+Suggests:	%{name}-Text = %{version}-%{release}
+Suggests:	%{name}-Validator = %{version}-%{release}
 
 %description Captcha
 CAPTCHA stands for "Completely Automated Public Turing test to tell
@@ -118,6 +123,7 @@ Summary:	Zend Framework 2: Code Component
 URL:		http://framework.zend.com/manual/2.4/en/index.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-EventManager = %{version}-%{release}
+Suggests:	%{name}-Stdlib = %{version}-%{release}
 
 %description Code
 Provides facilities to generate arbitrary code using an object
@@ -128,6 +134,10 @@ Summary:	Zend Framework 2: Config Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.config.introduction.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
+Suggests:	%{name}-Filter = %{version}-%{release}
+Suggests:	%{name}-I18n = %{version}-%{release}
+Suggests:	%{name}-Json = %{version}-%{release}
+Suggests:	%{name}-ServiceManager = %{version}-%{release}
 
 %description Config
 Zend\Config is designed to simplify access to configuration data
@@ -142,7 +152,9 @@ YAML and XML files.
 Summary:	Zend Framework 2: Console Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.console.introduction.html
 Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-Filter = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
+Requires:	%{name}-Validator = %{version}-%{release}
 
 %description Console
 Zend Framework 2 features built-in console support.
@@ -200,6 +212,8 @@ Summary:	Zend Framework 2: DB Component
 URL:		http://framework.zend.com/manual/2.4/en/index.html#zend-db
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
+Suggests:	%{name}-EventManager = %{version}-%{release}
+Suggests:	%{name}-ServiceManager = %{version}-%{release}
 
 %description Db
 %{summary}
@@ -215,7 +229,7 @@ Optional:
 Summary:	Zend Framework 2: Debug Component
 URL:		http://framework.zend.com/manual/2.4/en/index.html
 Requires:	%{name} = %{version}-%{release}
-Requires:	%{name}-Escaper = %{version}-%{release}
+Suggests:	%{name}-Escaper = %{version}-%{release}
 
 %description Debug
 %{summary}
@@ -228,6 +242,7 @@ URL:		http://framework.zend.com/manual/2.4/en/modules/zend.di.introduction.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Code = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
+Suggests:	%{name}-ServiceManager = %{version}-%{release}
 
 %description Di
 Dependency Injection (here-in called DI) is a concept that has been
@@ -286,6 +301,11 @@ URL:		http://framework.zend.com/manual/2.4/en/modules/zend.feed.introduction.htm
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Escaper = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
+Suggests:	%{name}-Cache = %{version}-%{release}
+Suggests:	%{name}-Db = %{version}-%{release}
+Suggests:	%{name}-Http = %{version}-%{release}
+Suggests:	%{name}-ServiceManager = %{version}-%{release}
+Suggests:	%{name}-Validator = %{version}-%{release}
 
 %description Feed
 Zend\Feed provides functionality for consuming RSS and Atom feeds. It
@@ -307,6 +327,9 @@ Summary:	Zend Framework 2: File Component
 URL:		http://framework.zend.com/manual/2.4/en/index.html#zend-file
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
+Suggests:	%{name}-Filter = %{version}-%{release}
+Suggests:	%{name}-I18n = %{version}-%{release}
+Suggests:	%{name}-Validator = %{version}-%{release}
 
 %description File
 %{summary}
@@ -316,6 +339,10 @@ Summary:	Zend Framework 2: Filter Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.filter.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
+Suggests:	%{name}-Crypt = %{version}-%{release}
+Suggests:	%{name}-I18n = %{version}-%{release}
+Suggests:	%{name}-Servicemanager = %{version}-%{release}
+Suggests:	%{name}-Uri = %{version}-%{release}
 
 %description Filter
 The Zend\Filter component provides a set of commonly needed data
@@ -329,6 +356,14 @@ URL:		http://framework.zend.com/manual/2.4/en/modules/zend.form.intro.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-InputFilter = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
+Suggests:	%{name}-Captcha = %{version}-%{release}
+Suggests:	%{name}-Code = %{version}-%{release}
+Suggests:	%{name}-EventManager = %{version}-%{release}
+Suggests:	%{name}-Filter = %{version}-%{release}
+Suggests:	%{name}-I18n = %{version}-%{release}
+Suggests:	%{name}-ServiceManager = %{version}-%{release}
+Suggests:	%{name}-Validator = %{version}-%{release}
+Suggests:	%{name}-View = %{version}-%{release}
 
 %description Form
 Zend\Form is intended primarily as a bridge between your domain models
@@ -374,6 +409,13 @@ Summary:	Zend Framework 2: i18n Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.i18n.translating.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
+Suggests:	%{name}-Cache = %{version}-%{release}
+Suggests:	%{name}-Config = %{version}-%{release}
+Suggests:	%{name}-EventManager = %{version}-%{release}
+Suggests:	%{name}-Filter = %{version}-%{release}
+Suggests:	%{name}-ServiceManager = %{version}-%{release}
+Suggests:	%{name}-Validator = %{version}-%{release}
+Suggests:	%{name}-View = %{version}-%{release}
 
 %description I18n
 ZendI18n comes with a complete translation suite which supports all
@@ -393,6 +435,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Filter = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
 Requires:	%{name}-Validator = %{version}-%{release}
+Suggests:	%{name}-ServiceManager = %{version}-%{release}
 
 %description InputFilter
 The Zend\InputFilter component can be used to filter and validate
@@ -404,6 +447,9 @@ Summary:	Zend Framework 2: JSON Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.json.introduction.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
+Suggests:	%{name}-Http = %{version}-%{release}
+Suggests:	%{name}-Server = %{version}-%{release}
+Suggests:	%{name}-Zendxml = %{version}-%{release}
 
 %description Json
 Zend\Json provides convenience methods for serializing native PHP to
@@ -429,6 +475,7 @@ Summary:	Zend Framework 2: LDAP Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.ldap.introduction.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
+Suggests:	%{name}-EventManager = %{version}-%{release}
 
 %description Ldap
 Zend\Ldap\Ldap is a class for performing LDAP operations including but
@@ -449,6 +496,11 @@ URL:		http://framework.zend.com/manual/2.4/en/modules/zend.log.overview.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-ServiceManager = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
+Suggests:	%{name}-Console = %{version}-%{release}
+Suggests:	%{name}-Db = %{version}-%{release}
+Suggests:	%{name}-Escaper = %{version}-%{release}
+Suggests:	%{name}-Mail = %{version}-%{release}
+Suggests:	%{name}-Validator = %{version}-%{release}
 
 %description Log
 Zend\Log\Logger is a component for general purpose logging. It
@@ -480,6 +532,7 @@ Requires:	%{name}-Loader = %{version}-%{release}
 Requires:	%{name}-Mime = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
 Requires:	%{name}-Validator = %{version}-%{release}
+Suggests:	%{name}-ServiceManager = %{version}-%{release}
 
 %description Mail
 Zend\Mail provides generalized functionality to compose and send both
@@ -493,7 +546,7 @@ Mail\Transport\TransportInterface.
 Summary:	Zend Framework 2: Math Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.math.introduction.html
 Requires:	%{name} = %{version}-%{release}
-Requires:	%{name}-ServiceManager = %{version}-%{release}
+Suggests:	%{name}-ServiceManager = %{version}-%{release}
 
 %description Math
 Zend\Math namespace provides general mathematical functions. So far
@@ -508,7 +561,7 @@ Optional: php-gmp
 Summary:	Zend Framework 2: Memory Component
 URL:		http://framework.zend.com/manual/2.4/en/index.html
 Requires:	%{name} = %{version}-%{release}
-Requires:	%{name}-Cache = %{version}-%{release}
+Suggests:	%{name}-Cache = %{version}-%{release}
 
 %description Memory
 %{summary}
@@ -518,6 +571,7 @@ Summary:	Zend Framework 2: MIME Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.mime.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
+Suggests:	%{name}-Mail = %{version}-%{release}
 
 %description Mime
 Zend\Mime\Mime is a support class for handling multipart MIME
@@ -532,6 +586,10 @@ URL:		http://framework.zend.com/manual/2.4/en/modules/zend.module-manager.intro.
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-EventManager = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
+Suggests:	%{name}-Config = %{version}-%{release}
+Suggests:	%{name}-Console = %{version}-%{release}
+Suggests:	%{name}-Loader = %{version}-%{release}
+Suggests:	%{name}-ServiceManager = %{version}-%{release}
 
 %description ModuleManager
 Zend Framework 2.0 introduces a new and powerful approach to modules.
@@ -548,6 +606,24 @@ Requires:	%{name}-EventManager = %{version}-%{release}
 Requires:	%{name}-Form = %{version}-%{release}
 Requires:	%{name}-ServiceManager = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
+Suggests:	%{name}-Authentication = %{version}-%{release}
+Suggests:	%{name}-Config = %{version}-%{release}
+Suggests:	%{name}-Console = %{version}-%{release}
+Suggests:	%{name}-Di = %{version}-%{release}
+Suggests:	%{name}-Filter = %{version}-%{release}
+Suggests:	%{name}-Http = %{version}-%{release}
+Suggests:	%{name}-I18n = %{version}-%{release}
+Suggests:	%{name}-InputFilter = %{version}-%{release}
+Suggests:	%{name}-Json = %{version}-%{release}
+Suggests:	%{name}-Log = %{version}-%{release}
+Suggests:	%{name}-ModuleManager = %{version}-%{release}
+Suggests:	%{name}-Serializer = %{version}-%{release}
+Suggests:	%{name}-Session = %{version}-%{release}
+Suggests:	%{name}-Text = %{version}-%{release}
+Suggests:	%{name}-Uri = %{version}-%{release}
+Suggests:	%{name}-Validator = %{version}-%{release}
+Suggests:	%{name}-Version = %{version}-%{release}
+Suggests:	%{name}-View = %{version}-%{release}
 
 %description Mvc
 Zend\Mvc is a brand new MVC implementation designed from the ground up
@@ -571,6 +647,11 @@ Summary:	Zend Framework 2: Navigation Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.navigation.intro.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
+Suggests:	%{name}-Config = %{version}-%{release}
+Suggests:	%{name}-Mvc = %{version}-%{release}
+Suggests:	%{name}-Permissions-Acl = %{version}-%{release}
+Suggests:	%{name}-ServiceManager = %{version}-%{release}
+Suggests:	%{name}-View = %{version}-%{release}
 
 %description Navigation
 Zend\Navigation is a component for managing trees of pointers to web
@@ -583,6 +664,12 @@ Summary:	Zend Framework 2: Paginator Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.paginator.introduction.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
+Suggests:	%{name}-cache = %{version}-%{release}
+Suggests:	%{name}-db = %{version}-%{release}
+Suggests:	%{name}-filter = %{version}-%{release}
+Suggests:	%{name}-json = %{version}-%{release}
+Suggests:	%{name}-servicemanager = %{version}-%{release}
+Suggests:	%{name}-view = %{version}-%{release}
 
 %description Paginator
 Zend\Paginator is a flexible component for paginating collections of
@@ -602,6 +689,7 @@ The primary design goals of Zend\Paginator are as follows:
 Summary:	Zend Framework 2: Permissions ACL Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.permissions.acl.intro.html
 Requires:	%{name} = %{version}-%{release}
+Suggests:	%{name}-ServiceManager = %{version}-%{release}
 
 %description Permissions-Acl
 The Zend\Permissions\Acl component provides a lightweight and flexible
@@ -639,6 +727,8 @@ Summary:	Zend Framework 2: ProgressBar Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.progress-bar.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
+Suggests:	%{name}-Json = %{version}-%{release}
+Suggests:	%{name}-Session = %{version}-%{release}
 
 %description ProgressBar
 Zend\ProgressBar is a component to create and update progress bars in
@@ -655,6 +745,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Json = %{version}-%{release}
 Requires:	%{name}-Math = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
+Suggests:	%{name}-ServiceManager = %{version}-%{release}
 
 %description Serializer
 The Zend\Serializer component provides an adapter based interface to
@@ -686,6 +777,7 @@ Zend\Server\Server's getFunctions() and loadFunctions() methods.
 Summary:	Zend Framework 2: ServiceManager Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.service-manager.intro.html
 Requires:	%{name} = %{version}-%{release}
+Suggests:	%{name}-Di = %{version}-%{release}
 
 %description ServiceManager
 The Service Locator design pattern is implemented by the
@@ -698,6 +790,11 @@ URL:		http://framework.zend.com/manual/2.4/en/index.html#zend-session
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-EventManager = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
+Suggests:	%{name}-Cache = %{version}-%{release}
+Suggests:	%{name}-Db = %{version}-%{release}
+Suggests:	%{name}-Http = %{version}-%{release}
+Suggests:	%{name}-ServiceManager = %{version}-%{release}
+Suggests:	%{name}-Validator = %{version}-%{release}
 
 %description Session
 Manage and preserve session data, a logical complement of cookie data,
@@ -712,6 +809,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Server = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
 Requires:	%{name}-Uri = %{version}-%{release}
+Suggests:	%{name}-Http = %{version}-%{release}
 
 %description Soap
 %{summary}
@@ -720,10 +818,10 @@ Requires:	%{name}-Uri = %{version}-%{release}
 Summary:	Zend Framework 2: Stdlib Component
 URL:		http://framework.zend.com/manual/2.4/en/index.html#zend-stdlib
 Requires:	%{name} = %{version}-%{release}
-Requires:	%{name}-EventManager = %{version}-%{release}
-Requires:	%{name}-Filter = %{version}-%{release}
-Requires:	%{name}-Serializer = %{version}-%{release}
-Requires:	%{name}-ServiceManager = %{version}-%{release}
+Suggests:	%{name}-EventManager = %{version}-%{release}
+Suggests:	%{name}-Filter = %{version}-%{release}
+Suggests:	%{name}-Serializer = %{version}-%{release}
+Suggests:	%{name}-ServiceManager = %{version}-%{release}
 
 %description Stdlib
 %{summary}
@@ -734,6 +832,7 @@ URL:		http://framework.zend.com/manual/2.4/en/modules/zend.tag.introduction.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Escaper = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
+Suggests:	%{name}-ServiceManager = %{version}-%{release}
 
 %description Tag
 Zend\Tag is a component suite which provides a facility to work with
@@ -811,6 +910,13 @@ Summary:	Zend Framework 2: Validator Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.validator.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
+Suggests:	%{name}-Db = %{version}-%{release}
+Suggests:	%{name}-Filter = %{version}-%{release}
+Suggests:	%{name}-I18n = %{version}-%{release}
+Suggests:	%{name}-Math = %{version}-%{release}
+Suggests:	%{name}-ServiceManager = %{version}-%{release}
+Suggests:	%{name}-Session = %{version}-%{release}
+Suggests:	%{name}-Uri = %{version}-%{release}
 
 %description Validator
 The Zend\Validator component provides a set of commonly needed
@@ -823,6 +929,7 @@ Summary:	Zend Framework 2: Version Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.version.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Json = %{version}-%{release}
+Suggests:	%{name}-Http = %{version}-%{release}
 
 %description Version
 Zend\Version provides a class constant Zend\Version\Version::VERSION
@@ -843,6 +950,19 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-EventManager = %{version}-%{release}
 Requires:	%{name}-Loader = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
+Suggests:	%{name}-Authentication = %{version}-%{release}
+Suggests:	%{name}-Escaper = %{version}-%{release}
+Suggests:	%{name}-Feed = %{version}-%{release}
+Suggests:	%{name}-Filter = %{version}-%{release}
+Suggests:	%{name}-Http = %{version}-%{release}
+Suggests:	%{name}-I18n = %{version}-%{release}
+Suggests:	%{name}-Json = %{version}-%{release}
+Suggests:	%{name}-Mvc = %{version}-%{release}
+Suggests:	%{name}-Navigation = %{version}-%{release}
+Suggests:	%{name}-Paginator = %{version}-%{release}
+Suggests:	%{name}-Permissions-Acl = %{version}-%{release}
+Suggests:	%{name}-ServiceManager = %{version}-%{release}
+Suggests:	%{name}-Uri = %{version}-%{release}
 
 %description View
 Zend\View provides the "View' layer of Zend Framework 2's MVC system.
@@ -858,6 +978,7 @@ Requires:	%{name}-Math = %{version}-%{release}
 Requires:	%{name}-Server = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
 Requires:	%{name}-ZendXml = %{version}-%{release}
+Suggests:	%{name}-Cache = %{version}-%{release}
 
 %description XmlRpc
 From its home page, XML-RPC is described as a '...remote procedure
