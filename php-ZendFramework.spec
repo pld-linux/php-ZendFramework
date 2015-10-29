@@ -4,18 +4,19 @@
 
 # NOTE:
 # - ZendXml has it's own versioning schema, version 1.0.1 as of 2.4.8 ZF2 release
+# - ZF2 installs to /usr/share/php/Zend, while ZF1 installs to /usr/share/pear/Zend
 
 Summary:	Zend Framework 2
 Name:		php-ZendFramework
 Version:	2.4.8
-Release:	0.2
+Release:	0.3
 License:	BSD
 Group:		Development/Libraries
 Source0:	https://packages.zendframework.com/releases/ZendFramework-%{version}/ZendFramework-%{version}.tgz
 # Source0-md5:	145d2e23b9f745a1e11adbecc98761e9
 # git clone https://github.com/zendframework/zf2.git
-# cd zf2; git checkout release-2.3.9
-# tar czf ../ZendFramework-tests-2.3.9.tgz tests
+# cd zf2; git checkout release-2.4.8
+# tar czf ../ZendFramework-tests-2.4.8.tgz tests
 #Source1:	ZendFramework-tests-%{version}.tgz
 Source2:	autoload.php
 URL:		http://framework.zend.com/
@@ -1234,6 +1235,7 @@ cp -p %{SOURCE2} $RPM_BUILD_ROOT%{php_data_dir}/Zend/autoload.php
 %defattr(644,root,root,755)
 %doc library/Zend/Server/*.md
 %doc library/Zend/Server/composer.json
+%{php_data_dir}/Zend/Server
 %exclude %{php_data_dir}/Zend/Server/*.md
 %exclude %{php_data_dir}/Zend/Server/composer.json
 
