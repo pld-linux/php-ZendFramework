@@ -16,10 +16,13 @@ Source0:	https://packages.zendframework.com/releases/ZendFramework-%{version}/Ze
 # git clone https://github.com/zendframework/zf2.git
 # cd zf2; git checkout release-2.3.9
 # tar czf ../ZendFramework-tests-2.3.9.tgz tests
-#Source1:   ZendFramework-tests-%{version}.tgz
+#Source1:	ZendFramework-tests-%{version}.tgz
 Source2:	autoload.php
 URL:		http://framework.zend.com/
 Requires:	php(core) >= 5.3.23
+%if %{with tests}
+BuildRequires:	phpunit >= 4.0.0
+%endif
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
