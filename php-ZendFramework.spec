@@ -796,12 +796,12 @@ Summary:	Zend Framework 2: Paginator Component
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.paginator.introduction.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
-Suggests:	%{name}-cache = %{version}-%{release}
-Suggests:	%{name}-db = %{version}-%{release}
-Suggests:	%{name}-filter = %{version}-%{release}
-Suggests:	%{name}-json = %{version}-%{release}
-Suggests:	%{name}-servicemanager = %{version}-%{release}
-Suggests:	%{name}-view = %{version}-%{release}
+Suggests:	%{name}-Cache = %{version}-%{release}
+Suggests:	%{name}-Db = %{version}-%{release}
+Suggests:	%{name}-Filter = %{version}-%{release}
+Suggests:	%{name}-Json = %{version}-%{release}
+Suggests:	%{name}-ServiceManager = %{version}-%{release}
+Suggests:	%{name}-View = %{version}-%{release}
 Suggests:	php(reflection)
 Suggests:	php(spl)
 
