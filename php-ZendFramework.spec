@@ -42,6 +42,18 @@ Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.authentication.intro.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
+Suggests:	%{name}-Crypt = %{version}-%{release}
+Suggests:	%{name}-Db = %{version}-%{release}
+Suggests:	%{name}-Http = %{version}-%{release}
+Suggests:	%{name}-Ldap = %{version}-%{release}
+Suggests:	%{name}-Session = %{version}-%{release}
+Suggests:	%{name}-Uri = %{version}-%{release}
+Suggests:	%{name}-Validator = %{version}-%{release}
+Suggests:	php(ctype)
+Suggests:	php(date)
+Suggests:	php(hash)
+Suggests:	php(pcre)
+Suggests:	php(spl)
 
 %description Authentication
 The Zend\Authentication component provides an API for authentication
