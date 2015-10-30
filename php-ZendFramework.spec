@@ -9,9 +9,9 @@
 Summary:	Zend Framework 2
 Name:		php-ZendFramework
 Version:	2.4.8
-Release:	1
+Release:	2
 License:	BSD
-Group:		Development/Libraries
+Group:		Development/Languages/PHP
 Source0:	https://packages.zendframework.com/releases/ZendFramework-%{version}/ZendFramework-%{version}.tgz
 # Source0-md5:	145d2e23b9f745a1e11adbecc98761e9
 # git clone https://github.com/zendframework/zf2.git
@@ -38,6 +38,7 @@ framework with over 15 million downloads.
 
 %package Authentication
 Summary:	Zend Framework 2: Authentication Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.authentication.intro.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
@@ -59,6 +60,7 @@ Zend\Permissions\Acl or Zend\Permissions\Rbac component.
 
 %package Barcode
 Summary:	Zend Framework 2: Barcode Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.barcode.intro.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
@@ -79,6 +81,7 @@ based on the support required.
 
 %package Cache
 Summary:	Zend Framework 2: Cache Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/index.html#zend-cache
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-EventManager = %{version}-%{release}
@@ -105,6 +108,7 @@ Optional:
 
 %package Captcha
 Summary:	Zend Framework 2: CAPTCHA Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.captcha.intro.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Math = %{version}-%{release}
@@ -132,6 +136,7 @@ conjunction with the Zend\Form component.
 
 %package Code
 Summary:	Zend Framework 2: Code Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/index.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-EventManager = %{version}-%{release}
@@ -147,6 +152,7 @@ oriented interface.
 
 %package Config
 Summary:	Zend Framework 2: Config Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.config.introduction.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
@@ -171,6 +177,7 @@ YAML and XML files.
 
 %package Console
 Summary:	Zend Framework 2: Console Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.console.introduction.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Filter = %{version}-%{release}
@@ -205,6 +212,7 @@ controller to handle the request.
 
 %package Crypt
 Summary:	Zend Framework 2: Crypt Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.crypt.introduction.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Math = %{version}-%{release}
@@ -239,6 +247,7 @@ component only if you have a minimum background on this topic.
 
 %package Db
 Summary:	Zend Framework 2: DB Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/index.html#zend-db
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
@@ -261,6 +270,7 @@ Optional:
 
 %package Debug
 Summary:	Zend Framework 2: Debug Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/index.html
 Requires:	%{name} = %{version}-%{release}
 Suggests:	%{name}-Escaper = %{version}-%{release}
@@ -273,6 +283,7 @@ Optional: XDebug (php-pecl-xdebug)
 
 %package Di
 Summary:	Zend Framework 2: DI Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.di.introduction.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Code = %{version}-%{release}
@@ -294,6 +305,7 @@ injected into MovieLister.
 
 %package Dom
 Summary:	Zend Framework 2: DOM Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.dom.intro.html
 Requires:	%{name} = %{version}-%{release}
 Suggests:	php(dom)
@@ -309,6 +321,7 @@ CSS selectors.
 
 %package Escaper
 Summary:	Zend Framework 2: Escaper Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.escaper.introduction.html
 Requires:	%{name} = %{version}-%{release}
 Suggests:	php(ctype)
@@ -327,6 +340,7 @@ introducing contextual escaping based on peer-reviewed rules.
 
 %package EventManager
 Summary:	Zend Framework 2: EventManager Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.event-manager.event-manager.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
@@ -345,6 +359,7 @@ collections; trigger events; and interrupt execution of listeners.
 
 %package Feed
 Summary:	Zend Framework 2: Feed Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.feed.introduction.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Escaper = %{version}-%{release}
@@ -380,6 +395,7 @@ but used in conjunction with RSS and Atom feeds.
 
 %package File
 Summary:	Zend Framework 2: File Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/index.html#zend-file
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
@@ -397,6 +413,7 @@ Suggests:	php(tokenizer)
 
 %package Filter
 Summary:	Zend Framework 2: Filter Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.filter.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
@@ -423,6 +440,7 @@ order.
 
 %package Form
 Summary:	Zend Framework 2: Form Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.form.intro.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-InputFilter = %{version}-%{release}
@@ -458,6 +476,7 @@ The Zend\Form component consists of the following objects:
 
 %package Http
 Summary:	Zend Framework 2: HTTP Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.http.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Loader = %{version}-%{release}
@@ -490,6 +509,7 @@ things HTTP. In nutshell, there are several parts of Zend\Http:
 
 %package I18n
 Summary:	Zend Framework 2: i18n Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.i18n.translating.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
@@ -519,6 +539,7 @@ will actually do nothing but just return the given message IDs.
 
 %package InputFilter
 Summary:	Zend Framework 2: InputFilter Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.input-filter.intro.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Filter = %{version}-%{release}
@@ -534,6 +555,7 @@ $_GET or $_POST values, CLI arguments, etc.
 
 %package Json
 Summary:	Zend Framework 2: JSON Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.json.introduction.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
@@ -567,6 +589,7 @@ processing techniques.
 
 %package Ldap
 Summary:	Zend Framework 2: LDAP Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.ldap.introduction.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
@@ -586,6 +609,7 @@ directory.
 
 %package Loader
 Summary:	Zend Framework 2: Loader Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/index.html#zend-loader
 Requires:	%{name} = %{version}-%{release}
 Suggests:	php(bz2)
@@ -598,6 +622,7 @@ Suggests:	php(spl)
 
 %package Log
 Summary:	Zend Framework 2: Log Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.log.overview.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-ServiceManager = %{version}-%{release}
@@ -636,6 +661,7 @@ Optional: MongoDB (php-pecl-mongo)
 
 %package Mail
 Summary:	Zend Framework 2: Mail Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.mail.introduction.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Crypt = %{version}-%{release}
@@ -660,6 +686,7 @@ Mail\Transport\TransportInterface.
 
 %package Math
 Summary:	Zend Framework 2: Math Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.math.introduction.html
 Requires:	%{name} = %{version}-%{release}
 Suggests:	%{name}-ServiceManager = %{version}-%{release}
@@ -680,6 +707,7 @@ Optional: php-gmp
 
 %package Memory
 Summary:	Zend Framework 2: Memory Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/index.html
 Requires:	%{name} = %{version}-%{release}
 Suggests:	%{name}-Cache = %{version}-%{release}
@@ -690,6 +718,7 @@ Suggests:	php(spl)
 
 %package Mime
 Summary:	Zend Framework 2: MIME Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.mime.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
@@ -707,6 +736,7 @@ Optional: %{name}-Mail
 
 %package ModuleManager
 Summary:	Zend Framework 2: ModuleManager Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.module-manager.intro.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-EventManager = %{version}-%{release}
@@ -726,6 +756,7 @@ public assets such as images, CSS, and JavaScript.
 
 %package Mvc
 Summary:	Zend Framework 2: MVC Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.mvc.intro.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-EventManager = %{version}-%{release}
@@ -774,6 +805,7 @@ The MVC layer is built on top of the following components:
 
 %package Navigation
 Summary:	Zend Framework 2: Navigation Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.navigation.intro.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
@@ -793,6 +825,7 @@ purposes.
 
 %package Paginator
 Summary:	Zend Framework 2: Paginator Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.paginator.introduction.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
@@ -821,6 +854,7 @@ The primary design goals of Zend\Paginator are as follows:
 
 %package Permissions-Acl
 Summary:	Zend Framework 2: Permissions ACL Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.permissions.acl.intro.html
 Requires:	%{name} = %{version}-%{release}
 Suggests:	%{name}-ServiceManager = %{version}-%{release}
@@ -847,6 +881,7 @@ control how roles are granted access to resources.
 
 %package Permissions-Rbac
 Summary:	Zend Framework 2: Permissions RBAC Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.permissions.rbac.intro.html
 Requires:	%{name} = %{version}-%{release}
 Suggests:	php(spl)
@@ -860,6 +895,7 @@ permissions rather than objects (resources).
 
 %package ProgressBar
 Summary:	Zend Framework 2: ProgressBar Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.progress-bar.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
@@ -880,6 +916,7 @@ estimated time left.
 
 %package Serializer
 Summary:	Zend Framework 2: Serializer Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.serializer.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Json = %{version}-%{release}
@@ -902,6 +939,7 @@ Optional: msgpack (php-pecl-msgpack)
 
 %package Server
 Summary:	Zend Framework 2: Server Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.server.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Code = %{version}-%{release}
@@ -924,6 +962,7 @@ Zend\Server\Server's getFunctions() and loadFunctions() methods.
 
 %package ServiceManager
 Summary:	Zend Framework 2: ServiceManager Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.service-manager.intro.html
 Requires:	%{name} = %{version}-%{release}
 Suggests:	%{name}-Di = %{version}-%{release}
@@ -937,6 +976,7 @@ locator, tasked with retrieving other objects.
 
 %package Session
 Summary:	Zend Framework 2: Session Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/index.html#zend-session
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-EventManager = %{version}-%{release}
@@ -960,6 +1000,7 @@ Optional: MongoDB (php-pecl-mongo)
 
 %package Soap
 Summary:	Zend Framework 2: SOAP Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/index.html#zend-soap
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Server = %{version}-%{release}
@@ -980,6 +1021,7 @@ Suggests:	php(xml)
 
 %package Stdlib
 Summary:	Zend Framework 2: Stdlib Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/index.html#zend-stdlib
 Requires:	%{name} = %{version}-%{release}
 Suggests:	%{name}-EventManager = %{version}-%{release}
@@ -1000,6 +1042,7 @@ Suggests:	php(spl)
 
 %package Tag
 Summary:	Zend Framework 2: Tag Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.tag.introduction.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Escaper = %{version}-%{release}
@@ -1027,6 +1070,7 @@ weight values based on the given relative weights of each item in it.
 
 %package Test
 Summary:	Zend Framework 2: Test Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.test.introduction.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Console = %{version}-%{release}
@@ -1050,6 +1094,7 @@ PHPUnit is the only library supported currently.
 
 %package Text
 Summary:	Zend Framework 2: Text Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/index.html#zend-text
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-ServiceManager = %{version}-%{release}
@@ -1065,6 +1110,7 @@ Suggests:	php(spl)
 
 %package Uri
 Summary:	Zend Framework 2: URI Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.uri.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Escaper = %{version}-%{release}
@@ -1088,6 +1134,7 @@ if such a class is registered with the Factory.
 
 %package Validator
 Summary:	Zend Framework 2: Validator Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.validator.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Stdlib = %{version}-%{release}
@@ -1113,6 +1160,7 @@ user-defined order.
 
 %package Version
 Summary:	Zend Framework 2: Version Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.version.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Json = %{version}-%{release}
@@ -1134,6 +1182,7 @@ newer than the version of the Zend Framework installation.
 
 %package View
 Summary:	Zend Framework 2: View Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.view.quick-start.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-EventManager = %{version}-%{release}
@@ -1165,6 +1214,7 @@ extension, substitution, and more.
 
 %package XmlRpc
 Summary:	Zend Framework 2: XML-RPC Component
+Group:		Development/Languages/PHP
 URL:		http://framework.zend.com/manual/2.4/en/modules/zend.xmlrpc.intro.html
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-Http = %{version}-%{release}
@@ -1196,6 +1246,7 @@ services and building new XML-RPC servers.
 
 %package ZendXml
 Summary:	Zend Framework 2: XML usage, best practices, and security in PHP
+Group:		Development/Languages/PHP
 URL:		https://github.com/zendframework/ZendXml
 Requires:	%{name} = %{version}-%{release}
 Requires:	php(dom)
