@@ -8,12 +8,12 @@
 
 Summary:	Zend Framework 2
 Name:		php-ZendFramework
-Version:	2.4.8
-Release:	2
+Version:	2.4.9
+Release:	1
 License:	BSD
 Group:		Development/Languages/PHP
 Source0:	https://packages.zendframework.com/releases/ZendFramework-%{version}/ZendFramework-%{version}.tgz
-# Source0-md5:	145d2e23b9f745a1e11adbecc98761e9
+# Source0-md5:	6228d1fdcd9053315e85d1ce45811bf4
 # git clone https://github.com/zendframework/zf2.git
 # cd zf2; git checkout release-2.4.8
 # tar czf ../ZendFramework-tests-2.4.8.tgz tests
