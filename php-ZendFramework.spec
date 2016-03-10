@@ -1282,6 +1282,15 @@ usage. If the XML document uses ENTITY the library throw an Exception.
 %setup -q -n ZendFramework-%{version} %{?with_tests:-a 1}
 %patch -p2 -d library/Zend/Mail
 
+# move doc for easier install
+install -d doc
+for p in library/Zend/*/*.json library/Zend/*/*/*.json; do
+	p=${p%/composer.json}
+	d=${p#library/Zend/}
+	install -d doc/$d
+	mv $p/*.md $p/composer.json doc/$d
+done
+
 %build
 %if %{with tests}
 cd tests
@@ -1327,406 +1336,306 @@ cp -p %{SOURCE2} $RPM_BUILD_ROOT%{php_data_dir}/Zend/autoload.php
 
 %files Authentication
 %defattr(644,root,root,755)
-%doc library/Zend/Authentication/*.md
-%doc library/Zend/Authentication/composer.json
+%doc doc/Authentication/*.md
+%doc doc/Authentication/composer.json
 %{php_data_dir}/Zend/Authentication
-%exclude %{php_data_dir}/Zend/Authentication/*.md
-%exclude %{php_data_dir}/Zend/Authentication/composer.json
 
 %files Barcode
 %defattr(644,root,root,755)
-%doc library/Zend/Barcode/*.md
-%doc library/Zend/Barcode/composer.json
+%doc doc/Barcode/*.md
+%doc doc/Barcode/composer.json
 %{php_data_dir}/Zend/Barcode
-%exclude %{php_data_dir}/Zend/Barcode/*.md
-%exclude %{php_data_dir}/Zend/Barcode/composer.json
 
 %files Cache
 %defattr(644,root,root,755)
-%doc library/Zend/Cache/*.md
-%doc library/Zend/Cache/composer.json
+%doc doc/Cache/*.md
+%doc doc/Cache/composer.json
 %{php_data_dir}/Zend/Cache
-%exclude %{php_data_dir}/Zend/Cache/*.md
-%exclude %{php_data_dir}/Zend/Cache/composer.json
 
 %files Captcha
 %defattr(644,root,root,755)
-%doc library/Zend/Captcha/*.md
-%doc library/Zend/Captcha/composer.json
+%doc doc/Captcha/*.md
+%doc doc/Captcha/composer.json
 %{php_data_dir}/Zend/Captcha
-%exclude %{php_data_dir}/Zend/Captcha/*.md
-%exclude %{php_data_dir}/Zend/Captcha/composer.json
 
 %files Code
 %defattr(644,root,root,755)
-%doc library/Zend/Code/*.md
-%doc library/Zend/Code/composer.json
+%doc doc/Code/*.md
+%doc doc/Code/composer.json
 %{php_data_dir}/Zend/Code
-%exclude %{php_data_dir}/Zend/Code/*.md
-%exclude %{php_data_dir}/Zend/Code/composer.json
 
 %files Config
 %defattr(644,root,root,755)
-%doc library/Zend/Config/*.md
-%doc library/Zend/Config/composer.json
+%doc doc/Config/*.md
+%doc doc/Config/composer.json
 %{php_data_dir}/Zend/Config
-%exclude %{php_data_dir}/Zend/Config/*.md
-%exclude %{php_data_dir}/Zend/Config/composer.json
 
 %files Console
 %defattr(644,root,root,755)
-%doc library/Zend/Console/*.md
-%doc library/Zend/Console/composer.json
+%doc doc/Console/*.md
+%doc doc/Console/composer.json
 %{php_data_dir}/Zend/Console
-%exclude %{php_data_dir}/Zend/Console/*.md
-%exclude %{php_data_dir}/Zend/Console/composer.json
 
 %files Crypt
 %defattr(644,root,root,755)
-%doc library/Zend/Crypt/*.md
-%doc library/Zend/Crypt/composer.json
+%doc doc/Crypt/*.md
+%doc doc/Crypt/composer.json
 %{php_data_dir}/Zend/Crypt
-%exclude %{php_data_dir}/Zend/Crypt/*.md
-%exclude %{php_data_dir}/Zend/Crypt/composer.json
 
 %files Db
 %defattr(644,root,root,755)
-%doc library/Zend/Db/*.md
-%doc library/Zend/Db/composer.json
+%doc doc/Db/*.md
+%doc doc/Db/composer.json
 %{php_data_dir}/Zend/Db
-%exclude %{php_data_dir}/Zend/Db/*.md
-%exclude %{php_data_dir}/Zend/Db/composer.json
 
 %files Debug
 %defattr(644,root,root,755)
-%doc library/Zend/Debug/*.md
-%doc library/Zend/Debug/composer.json
+%doc doc/Debug/*.md
+%doc doc/Debug/composer.json
 %{php_data_dir}/Zend/Debug
-%exclude %{php_data_dir}/Zend/Debug/*.md
-%exclude %{php_data_dir}/Zend/Debug/composer.json
 
 %files Di
 %defattr(644,root,root,755)
-%doc library/Zend/Di/*.md
-%doc library/Zend/Di/composer.json
+%doc doc/Di/*.md
+%doc doc/Di/composer.json
 %{php_data_dir}/Zend/Di
-%exclude %{php_data_dir}/Zend/Di/*.md
-%exclude %{php_data_dir}/Zend/Di/composer.json
 
 %files Dom
 %defattr(644,root,root,755)
-%doc library/Zend/Dom/*.md
-%doc library/Zend/Dom/composer.json
+%doc doc/Dom/*.md
+%doc doc/Dom/composer.json
 %{php_data_dir}/Zend/Dom
-%exclude %{php_data_dir}/Zend/Dom/*.md
-%exclude %{php_data_dir}/Zend/Dom/composer.json
 
 %files Escaper
 %defattr(644,root,root,755)
-%doc library/Zend/Escaper/*.md
-%doc library/Zend/Escaper/composer.json
+%doc doc/Escaper/*.md
+%doc doc/Escaper/composer.json
 %{php_data_dir}/Zend/Escaper
-%exclude %{php_data_dir}/Zend/Escaper/*.md
-%exclude %{php_data_dir}/Zend/Escaper/composer.json
 
 %files EventManager
 %defattr(644,root,root,755)
-%doc library/Zend/EventManager/*.md
-%doc library/Zend/EventManager/composer.json
+%doc doc/EventManager/*.md
+%doc doc/EventManager/composer.json
 %{php_data_dir}/Zend/EventManager
-%exclude %{php_data_dir}/Zend/EventManager/*.md
-%exclude %{php_data_dir}/Zend/EventManager/composer.json
 
 %files Feed
 %defattr(644,root,root,755)
-%doc library/Zend/Feed/*.md
-%doc library/Zend/Feed/composer.json
+%doc doc/Feed/*.md
+%doc doc/Feed/composer.json
 %{php_data_dir}/Zend/Feed
-%exclude %{php_data_dir}/Zend/Feed/*.md
-%exclude %{php_data_dir}/Zend/Feed/composer.json
 
 %files File
 %defattr(644,root,root,755)
-%doc library/Zend/File/*.md
-%doc library/Zend/File/composer.json
+%doc doc/File/*.md
+%doc doc/File/composer.json
 %{php_data_dir}/Zend/File
-%exclude %{php_data_dir}/Zend/File/*.md
-%exclude %{php_data_dir}/Zend/File/composer.json
 
 %files Filter
 %defattr(644,root,root,755)
-%doc library/Zend/Filter/*.md
-%doc library/Zend/Filter/composer.json
+%doc doc/Filter/*.md
+%doc doc/Filter/composer.json
 %{php_data_dir}/Zend/Filter
-%exclude %{php_data_dir}/Zend/Filter/*.md
-%exclude %{php_data_dir}/Zend/Filter/composer.json
 
 %files Form
 %defattr(644,root,root,755)
-%doc library/Zend/Form/*.md
-%doc library/Zend/Form/composer.json
+%doc doc/Form/*.md
+%doc doc/Form/composer.json
 %{php_data_dir}/Zend/Form
-%exclude %{php_data_dir}/Zend/Form/*.md
-%exclude %{php_data_dir}/Zend/Form/composer.json
 
 %files Http
 %defattr(644,root,root,755)
-%doc library/Zend/Http/*.md
-%doc library/Zend/Http/composer.json
+%doc doc/Http/*.md
+%doc doc/Http/composer.json
 %{php_data_dir}/Zend/Http
-%exclude %{php_data_dir}/Zend/Http/*.md
-%exclude %{php_data_dir}/Zend/Http/composer.json
 
 %files I18n
 %defattr(644,root,root,755)
-%doc library/Zend/I18n/*.md
-%doc library/Zend/I18n/composer.json
+%doc doc/I18n/*.md
+%doc doc/I18n/composer.json
 %{php_data_dir}/Zend/I18n
-%exclude %{php_data_dir}/Zend/I18n/*.md
-%exclude %{php_data_dir}/Zend/I18n/composer.json
 
 %files InputFilter
 %defattr(644,root,root,755)
-%doc library/Zend/InputFilter/*.md
-%doc library/Zend/InputFilter/composer.json
+%doc doc/InputFilter/*.md
+%doc doc/InputFilter/composer.json
 %{php_data_dir}/Zend/InputFilter
-%exclude %{php_data_dir}/Zend/InputFilter/*.md
-%exclude %{php_data_dir}/Zend/InputFilter/composer.json
 
 %files Json
 %defattr(644,root,root,755)
-%doc library/Zend/Json/*.md
-%doc library/Zend/Json/composer.json
+%doc doc/Json/*.md
+%doc doc/Json/composer.json
 %{php_data_dir}/Zend/Json
-%exclude %{php_data_dir}/Zend/Json/*.md
-%exclude %{php_data_dir}/Zend/Json/composer.json
 
 %files Ldap
 %defattr(644,root,root,755)
-%doc library/Zend/Ldap/*.md
-%doc library/Zend/Ldap/composer.json
+%doc doc/Ldap/*.md
+%doc doc/Ldap/composer.json
 %{php_data_dir}/Zend/Ldap
-%exclude %{php_data_dir}/Zend/Ldap/*.md
-%exclude %{php_data_dir}/Zend/Ldap/composer.json
 
 %files Loader
 %defattr(644,root,root,755)
-%doc library/Zend/Loader/*.md
-%doc library/Zend/Loader/composer.json
+%doc doc/Loader/*.md
+%doc doc/Loader/composer.json
 %{php_data_dir}/Zend/autoload.php
 %{php_data_dir}/Zend/Loader
-%exclude %{php_data_dir}/Zend/Loader/*.md
-%exclude %{php_data_dir}/Zend/Loader/composer.json
 
 %files Log
 %defattr(644,root,root,755)
-%doc library/Zend/Log/*.md
-%doc library/Zend/Log/composer.json
+%doc doc/Log/*.md
+%doc doc/Log/composer.json
 %{php_data_dir}/Zend/Log
-%exclude %{php_data_dir}/Zend/Log/*.md
-%exclude %{php_data_dir}/Zend/Log/composer.json
 
 %files Mail
 %defattr(644,root,root,755)
-%doc library/Zend/Mail/*.md
-%doc library/Zend/Mail/composer.json
+%doc doc/Mail/*.md
+%doc doc/Mail/composer.json
 %{php_data_dir}/Zend/Mail
-%exclude %{php_data_dir}/Zend/Mail/*.md
-%exclude %{php_data_dir}/Zend/Mail/composer.json
 
 %files Math
 %defattr(644,root,root,755)
-%doc library/Zend/Math/*.md
-%doc library/Zend/Math/composer.json
+%doc doc/Math/*.md
+%doc doc/Math/composer.json
 %{php_data_dir}/Zend/Math
-%exclude %{php_data_dir}/Zend/Math/*.md
-%exclude %{php_data_dir}/Zend/Math/composer.json
 
 %files Memory
 %defattr(644,root,root,755)
-%doc library/Zend/Memory/*.md
-%doc library/Zend/Memory/composer.json
+%doc doc/Memory/*.md
+%doc doc/Memory/composer.json
 %{php_data_dir}/Zend/Memory
-%exclude %{php_data_dir}/Zend/Memory/*.md
-%exclude %{php_data_dir}/Zend/Memory/composer.json
 
 %files Mime
 %defattr(644,root,root,755)
-%doc library/Zend/Mime/*.md
-%doc library/Zend/Mime/composer.json
+%doc doc/Mime/*.md
+%doc doc/Mime/composer.json
 %{php_data_dir}/Zend/Mime
-%exclude %{php_data_dir}/Zend/Mime/*.md
-%exclude %{php_data_dir}/Zend/Mime/composer.json
 
 %files ModuleManager
 %defattr(644,root,root,755)
-%doc library/Zend/ModuleManager/*.md
-%doc library/Zend/ModuleManager/composer.json
+%doc doc/ModuleManager/*.md
+%doc doc/ModuleManager/composer.json
 %{php_data_dir}/Zend/ModuleManager
-%exclude %{php_data_dir}/Zend/ModuleManager/*.md
-%exclude %{php_data_dir}/Zend/ModuleManager/composer.json
 
 %files Mvc
 %defattr(644,root,root,755)
-%doc library/Zend/Mvc/*.md
-%doc library/Zend/Mvc/composer.json
+%doc doc/Mvc/*.md
+%doc doc/Mvc/composer.json
 %{php_data_dir}/Zend/Mvc
-%exclude %{php_data_dir}/Zend/Mvc/*.md
-%exclude %{php_data_dir}/Zend/Mvc/composer.json
 
 %files Navigation
 %defattr(644,root,root,755)
-%doc library/Zend/Navigation/*.md
-%doc library/Zend/Navigation/composer.json
+%doc doc/Navigation/*.md
+%doc doc/Navigation/composer.json
 %{php_data_dir}/Zend/Navigation
-%exclude %{php_data_dir}/Zend/Navigation/*.md
-%exclude %{php_data_dir}/Zend/Navigation/composer.json
 
 %files Paginator
 %defattr(644,root,root,755)
-%doc library/Zend/Paginator/*.md
-%doc library/Zend/Paginator/composer.json
+%doc doc/Paginator/*.md
+%doc doc/Paginator/composer.json
 %{php_data_dir}/Zend/Paginator
-%exclude %{php_data_dir}/Zend/Paginator/*.md
-%exclude %{php_data_dir}/Zend/Paginator/composer.json
 
 %files Permissions-Acl
 %defattr(644,root,root,755)
-%doc library/Zend/Permissions/Acl/*.md
-%doc library/Zend/Permissions/Acl/composer.json
+%doc doc/Permissions/Acl/*.md
+%doc doc/Permissions/Acl/composer.json
 %dir %{php_data_dir}/Zend/Permissions
 %{php_data_dir}/Zend/Permissions/Acl
-%exclude %{php_data_dir}/Zend/Permissions/Acl/*.md
-%exclude %{php_data_dir}/Zend/Permissions/Acl/composer.json
 
 %files Permissions-Rbac
 %defattr(644,root,root,755)
-%doc library/Zend/Permissions/Rbac/*.md
-%doc library/Zend/Permissions/Rbac/composer.json
+%doc doc/Permissions/Rbac/*.md
+%doc doc/Permissions/Rbac/composer.json
 %dir %{php_data_dir}/Zend/Permissions
 %{php_data_dir}/Zend/Permissions/Rbac
-%exclude %{php_data_dir}/Zend/Permissions/Rbac/*.md
-%exclude %{php_data_dir}/Zend/Permissions/Rbac/composer.json
 
 %files ProgressBar
 %defattr(644,root,root,755)
-%doc library/Zend/ProgressBar/*.md
-%doc library/Zend/ProgressBar/composer.json
+%doc doc/ProgressBar/*.md
+%doc doc/ProgressBar/composer.json
 %{php_data_dir}/Zend/ProgressBar
-%exclude %{php_data_dir}/Zend/ProgressBar/*.md
-%exclude %{php_data_dir}/Zend/ProgressBar/composer.json
 
 %files Serializer
 %defattr(644,root,root,755)
-%doc library/Zend/Serializer/*.md
-%doc library/Zend/Serializer/composer.json
+%doc doc/Serializer/*.md
+%doc doc/Serializer/composer.json
 %{php_data_dir}/Zend/Serializer
-%exclude %{php_data_dir}/Zend/Serializer/*.md
-%exclude %{php_data_dir}/Zend/Serializer/composer.json
 
 %files Server
 %defattr(644,root,root,755)
-%doc library/Zend/Server/*.md
-%doc library/Zend/Server/composer.json
+%doc doc/Server/*.md
+%doc doc/Server/composer.json
 %{php_data_dir}/Zend/Server
-%exclude %{php_data_dir}/Zend/Server/*.md
-%exclude %{php_data_dir}/Zend/Server/composer.json
 
 %files ServiceManager
 %defattr(644,root,root,755)
-%doc library/Zend/ServiceManager/*.md
-%doc library/Zend/ServiceManager/composer.json
+%doc doc/ServiceManager/*.md
+%doc doc/ServiceManager/composer.json
 %{php_data_dir}/Zend/ServiceManager
-%exclude %{php_data_dir}/Zend/ServiceManager/*.md
-%exclude %{php_data_dir}/Zend/ServiceManager/composer.json
 
 %files Session
 %defattr(644,root,root,755)
-%doc library/Zend/Session/*.md
-%doc library/Zend/Session/composer.json
+%doc doc/Session/*.md
+%doc doc/Session/composer.json
 %{php_data_dir}/Zend/Session
-%exclude %{php_data_dir}/Zend/Session/*.md
-%exclude %{php_data_dir}/Zend/Session/composer.json
 
 %files Soap
 %defattr(644,root,root,755)
-%doc library/Zend/Soap/*.md
-%doc library/Zend/Soap/composer.json
+%doc doc/Soap/*.md
+%doc doc/Soap/composer.json
 %{php_data_dir}/Zend/Soap
-%exclude %{php_data_dir}/Zend/Soap/*.md
-%exclude %{php_data_dir}/Zend/Soap/composer.json
 
 %files Stdlib
 %defattr(644,root,root,755)
-%doc library/Zend/Stdlib/*.md
-%doc library/Zend/Stdlib/composer.json
+%doc doc/Stdlib/*.md
+%doc doc/Stdlib/composer.json
 %{php_data_dir}/Zend/Stdlib
-%exclude %{php_data_dir}/Zend/Stdlib/*.md
-%exclude %{php_data_dir}/Zend/Stdlib/composer.json
 
 %files Tag
 %defattr(644,root,root,755)
-%doc library/Zend/Tag/*.md
-%doc library/Zend/Tag/composer.json
+%doc doc/Tag/*.md
+%doc doc/Tag/composer.json
 %{php_data_dir}/Zend/Tag
-%exclude %{php_data_dir}/Zend/Tag/*.md
-%exclude %{php_data_dir}/Zend/Tag/composer.json
 
 %files Test
 %defattr(644,root,root,755)
-%doc library/Zend/Test/*.md
-%doc library/Zend/Test/composer.json
+%doc doc/Test/*.md
+%doc doc/Test/composer.json
 %{php_data_dir}/Zend/Test
-%exclude %{php_data_dir}/Zend/Test/*.md
-%exclude %{php_data_dir}/Zend/Test/composer.json
 
 %files Text
 %defattr(644,root,root,755)
-%doc library/Zend/Text/*.md
-%doc library/Zend/Text/composer.json
+%doc doc/Text/*.md
+%doc doc/Text/composer.json
 %{php_data_dir}/Zend/Text
-%exclude %{php_data_dir}/Zend/Text/*.md
-%exclude %{php_data_dir}/Zend/Text/composer.json
 
 %files Uri
 %defattr(644,root,root,755)
-%doc library/Zend/Uri/*.md
-%doc library/Zend/Uri/composer.json
+%doc doc/Uri/*.md
+%doc doc/Uri/composer.json
 %{php_data_dir}/Zend/Uri
-%exclude %{php_data_dir}/Zend/Uri/*.md
-%exclude %{php_data_dir}/Zend/Uri/composer.json
 
 %files Validator
 %defattr(644,root,root,755)
-%doc library/Zend/Validator/*.md
-%doc library/Zend/Validator/composer.json
+%doc doc/Validator/*.md
+%doc doc/Validator/composer.json
 %{php_data_dir}/Zend/Validator
-%exclude %{php_data_dir}/Zend/Validator/*.md
-%exclude %{php_data_dir}/Zend/Validator/composer.json
 
 %files Version
 %defattr(644,root,root,755)
-%doc library/Zend/Version/*.md
-%doc library/Zend/Version/composer.json
+%doc doc/Version/*.md
+%doc doc/Version/composer.json
 %{php_data_dir}/Zend/Version
-%exclude %{php_data_dir}/Zend/Version/*.md
-%exclude %{php_data_dir}/Zend/Version/composer.json
 
 %files View
 %defattr(644,root,root,755)
-%doc library/Zend/View/*.md
-%doc library/Zend/View/composer.json
+%doc doc/View/*.md
+%doc doc/View/composer.json
 %{php_data_dir}/Zend/View
-%exclude %{php_data_dir}/Zend/View/*.md
-%exclude %{php_data_dir}/Zend/View/composer.json
 
 %files XmlRpc
 %defattr(644,root,root,755)
-%doc library/Zend/XmlRpc/*.md
-%doc library/Zend/XmlRpc/composer.json
+%doc doc/XmlRpc/*.md
+%doc doc/XmlRpc/composer.json
 %{php_data_dir}/Zend/XmlRpc
-%exclude %{php_data_dir}/Zend/XmlRpc/*.md
-%exclude %{php_data_dir}/Zend/XmlRpc/composer.json
 
 %files ZendXml
 %defattr(644,root,root,755)
