@@ -9,7 +9,7 @@
 Summary:	Zend Framework 2
 Name:		php-ZendFramework
 Version:	2.4.9
-Release:	1
+Release:	2
 License:	BSD
 Group:		Development/Languages/PHP
 Source0:	https://packages.zendframework.com/releases/ZendFramework-%{version}/ZendFramework-%{version}.tgz
@@ -19,6 +19,7 @@ Source0:	https://packages.zendframework.com/releases/ZendFramework-%{version}/Ze
 # tar czf ../ZendFramework-tests-2.4.8.tgz tests
 #Source1:	ZendFramework-tests-%{version}.tgz
 Source2:	autoload.php
+Patch0:		bug-64.patch
 URL:		http://framework.zend.com/
 Requires:	php(core) >= 5.3.23
 %if %{with tests}
@@ -1279,6 +1280,7 @@ usage. If the XML document uses ENTITY the library throw an Exception.
 
 %prep
 %setup -q -n ZendFramework-%{version} %{?with_tests:-a 1}
+%patch -p2 -d library/Zend/Mail
 
 %build
 %if %{with tests}
