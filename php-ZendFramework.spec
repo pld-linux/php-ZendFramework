@@ -8,8 +8,8 @@
 
 Summary:	Zend Framework 2
 Name:		php-ZendFramework
-Version:	2.4.9
-Release:	2
+Version:	2.4.10
+Release:	1
 License:	BSD
 Group:		Development/Languages/PHP
 Source0:	https://packages.zendframework.com/releases/ZendFramework-%{version}/ZendFramework-%{version}.tgz
@@ -20,7 +20,7 @@ Source0:	https://packages.zendframework.com/releases/ZendFramework-%{version}/Ze
 #Source1:	ZendFramework-tests-%{version}.tgz
 Source2:	autoload.php
 Patch0:		bug-64.patch
-URL:		http://framework.zend.com/
+URL:		https://framework.zend.com/
 Requires:	php(core) >= 5.3.23
 %if %{with tests}
 BuildRequires:	phpunit >= 4.0.0
