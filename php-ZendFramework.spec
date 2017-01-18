@@ -9,7 +9,7 @@
 Summary:	Zend Framework 2
 Name:		php-ZendFramework
 Version:	2.4.11
-Release:	1
+Release:	2
 License:	BSD
 Group:		Development/Languages/PHP
 Source0:	https://packages.zendframework.com/releases/ZendFramework-%{version}/ZendFramework-%{version}.tgz
@@ -19,12 +19,12 @@ Source0:	https://packages.zendframework.com/releases/ZendFramework-%{version}/Ze
 # tar czf ../ZendFramework-tests-2.4.8.tgz tests
 #Source1:	ZendFramework-tests-%{version}.tgz
 Source2:	autoload.php
-Patch0:		bug-64.patch
+Patch0:		zf-mail-2.4-fixes.patch
 URL:		https://framework.zend.com/
-Requires:	php(core) >= 5.3.23
 %if %{with tests}
 BuildRequires:	phpunit >= 4.0.0
 %endif
+Requires:	php(core) >= 5.3.23
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -1280,7 +1280,7 @@ usage. If the XML document uses ENTITY the library throw an Exception.
 
 %prep
 %setup -q -n ZendFramework-%{version} %{?with_tests:-a 1}
-%patch -p2 -d library/Zend/Mail
+%patch0 -p2 -d library/Zend/Mail
 
 # move doc for easier install
 install -d doc
