@@ -277,3 +277,261 @@ index b416f52a..c05cde1b 100644
              }
          }
          return $headers;
+
+commit 8892c77410b08d2f0df90d4813904c10d741bd20
+Author: Daniel Król <daniel@krol.me>
+Date:   Wed Dec 2 17:24:47 2015 +0100
+
+    Inverse decode-split order, allow special char containing labels
+
+diff --git a/src/Header/AbstractAddressList.php b/src/Header/AbstractAddressList.php
+index e0b4e78c..64e5f8f9 100644
+--- a/src/Header/AbstractAddressList.php
++++ b/src/Header/AbstractAddressList.php
+@@ -42,31 +42,44 @@ abstract class AbstractAddressList implements HeaderInterface
+     public static function fromString($headerLine)
+     {
+         list($fieldName, $fieldValue) = GenericHeader::splitHeaderLine($headerLine);
+-        $decodedValue = HeaderWrap::mimeDecodeValue($fieldValue);
+-        $wasEncoded = ($decodedValue !== $fieldValue);
+-        $fieldValue = $decodedValue;
+-
+         if (strtolower($fieldName) !== static::$type) {
+             throw new Exception\InvalidArgumentException(sprintf(
+-                'Invalid header line for "%s" string',
+-                __CLASS__
+-            ));
+-        }
+-        $header = new static();
+-        if ($wasEncoded) {
+-            $header->setEncoding('UTF-8');
++                    'Invalid header line for "%s" string',
++                    __CLASS__
++                ));
+         }
++
+         // split value on ","
+         $fieldValue = str_replace(Headers::FOLDING, ' ', $fieldValue);
+         $fieldValue = preg_replace('/[^:]+:([^;]*);/', '$1,', $fieldValue);
+-        $values     = str_getcsv($fieldValue, ',');
++        $values = str_getcsv($fieldValue, ',');
++
++        $wasEncoded = false;
+         array_walk(
+             $values,
+-            function (&$value) {
+-                $value = trim($value);
++            function (&$value) use (&$wasEncoded) {
++                $decodedValue = HeaderWrap::mimeDecodeValue($value);
++                $wasEncoded = $wasEncoded || ($decodedValue !== $value);
++                $value = trim($decodedValue);
+                 $value = self::stripComments($value);
++                $value = preg_replace(
++                    [
++                        '#(?<!\\\)"(.*)(?<!\\\)"#', //quoted-text
++                        '#\\\([\x01-\x09\x0b\x0c\x0e-\x7f])#' //quoted-pair
++                    ],
++                    [
++                        '\\1',
++                        '\\1'
++                    ],
++                    $value
++                );
+             }
+         );
++        $header = new static();
++        if ($wasEncoded) {
++            $header->setEncoding('UTF-8');
++        }
++
+         $values = array_filter($values);
+ 
+         $addressList = $header->getAddressList();
+
+commit 9b54b914885a3c07fa7522fe1bedf7fb4482392b
+Author: Daniel Król <daniel@krol.me>
+Date:   Wed Dec 2 17:01:45 2015 +0100
+
+    Use RFC compliant EOL to allow new lines in message body
+    http://www.ietf.org/rfc/rfc2821.txt
+
+diff --git a/src/Message.php b/src/Message.php
+index e16c2438..f83c2961 100644
+--- a/src/Message.php
++++ b/src/Message.php
+@@ -551,7 +551,7 @@ class Message
+         $message = new static();
+         $headers = null;
+         $content = null;
+-        Mime\Decode::splitMessage($rawMessage, $headers, $content);
++        Mime\Decode::splitMessage($rawMessage, $headers, $content, Headers::EOL);
+         if ($headers->has('mime-version')) {
+             // todo - restore body to mime\message
+         }
+
+commit 788375fa8b156424a6b9afe40dac23ba6f00b916
+Author: Marvin Feldmann <BreyndotEchse@users.noreply.github.com>
+Date:   Fri Apr 15 16:53:17 2016 +0200
+
+    Allow DNS Hostnames
+
+diff --git a/src/Address.php b/src/Address.php
+index e97878d5..e4c89d20 100644
+--- a/src/Address.php
++++ b/src/Address.php
+@@ -27,7 +27,7 @@ class Address implements Address\AddressInterface
+      */
+     public function __construct($email, $name = null)
+     {
+-        $emailAddressValidator = new EmailAddressValidator(Hostname::ALLOW_LOCAL);
++        $emailAddressValidator = new EmailAddressValidator(Hostname::ALLOW_DNS | Hostname::ALLOW_LOCAL);
+         if (! is_string($email) || empty($email)) {
+             throw new Exception\InvalidArgumentException('Email must be a valid email address');
+         }
+
+commit e37c5e15185143eaaff7f2c4c2a64f605926c978
+Author: Marvin Feldmann <BreyndotEchse@users.noreply.github.com>
+Date:   Tue Apr 19 16:24:38 2016 +0200
+
+    Return email address(es) with ACE
+
+diff --git a/src/Header/AbstractAddressList.php b/src/Header/AbstractAddressList.php
+index 64e5f8f9..db40486a 100644
+--- a/src/Header/AbstractAddressList.php
++++ b/src/Header/AbstractAddressList.php
+@@ -94,6 +94,19 @@ abstract class AbstractAddressList implements HeaderInterface
+         return $this->fieldName;
+     }
+ 
++    /**
++     * Safely convert UTF-8 encoded domain name to ASCII
++     * @param string $domainName  the UTF-8 encoded email
++     * @return string
++     */
++    protected function idnToAscii($domainName)
++    {
++        if (extension_loaded('intl')) {
++            return (idn_to_ascii($domainName) ?: $domainName);
++        }
++        return $domainName;
++    }
++
+     public function getFieldValue($format = HeaderInterface::FORMAT_RAW)
+     {
+         $emails   = array();
+@@ -103,22 +116,29 @@ abstract class AbstractAddressList implements HeaderInterface
+             $email = $address->getEmail();
+             $name  = $address->getName();
+ 
+-            if (empty($name)) {
+-                $emails[] = $email;
+-                continue;
+-            }
+-
+-            if (false !== strstr($name, ',')) {
++            if (!empty($name) && false !== strstr($name, ',')) {
+                 $name = sprintf('"%s"', $name);
+             }
+ 
+             if ($format === HeaderInterface::FORMAT_ENCODED
+                 && 'ASCII' !== $encoding
+             ) {
+-                $name = HeaderWrap::mimeEncodeValue($name, $encoding);
++                if (!empty($name)) {
++                    $name = HeaderWrap::mimeEncodeValue($name, $encoding);
++                }
++
++                if (preg_match('/^(.+)@([^@]+)$/', $email, $matches)) {
++                    $localPart = $matches[1];
++                    $hostname  = $this->idnToAscii($matches[2]);
++                    $email = sprintf('%s@%s', $localPart, $hostname);
++                }
+             }
+ 
+-            $emails[] = sprintf('%s <%s>', $name, $email);
++            if (empty($name)) {
++                $emails[] = $email;
++            } else {
++                $emails[] = sprintf('%s <%s>', $name, $email);
++            }
+         }
+ 
+         // Ensure the values are valid before sending them.
+
+commit e00ac0101b964063c70e282575a5b1bc4022f227
+Author: Elan Ruusamäe <glen@delfi.ee>
+Date:   Sun May 14 15:09:56 2017 +0300
+
+    restore php 5.3 compat in HeaderValue. #129
+    
+    Error in HeaderValue (version 2.4.11 and 2.4.10) for PHP 5.3.26
+
+diff --git a/src/Header/HeaderValue.php b/src/Header/HeaderValue.php
+index 884cdcf7..5104a512 100644
+--- a/src/Header/HeaderValue.php
++++ b/src/Header/HeaderValue.php
+@@ -87,7 +87,7 @@ final class HeaderValue
+                 $lf = ord($value[$i + 1]);
+                 $sp = ord($value[$i + 2]);
+ 
+-                if ($lf !== 10 || ! in_array($sp, [9, 32], true)) {
++                if ($lf !== 10 || ! in_array($sp, array(9, 32), true)) {
+                     return false;
+                 }
+ 
+
+commit 6bbdb6b5b8f549fa9f87cc5a6adbb558dfefeb99
+Merge: 786a1418 e00ac010
+Author: Elan Ruusamäe <glen@delfi.ee>
+Date:   Sun May 14 15:16:24 2017 +0300
+
+    Merge branch 'fix-129' into develop-2.4
+    
+    fixing:
+    https://github.com/zendframework/zend-mail/issues/129
+
+commit ddf2e8ec39394774e753b9a44793e845134a3524
+Author: Matthew Weier O'Phinney <matthew@zend.com>
+Date:   Thu May 5 12:56:11 2016 -0500
+
+    Merge branch 'hotfix/86'
+    
+    Close #86
+
+diff --git a/src/Headers.php b/src/Headers.php
+index c05cde1b..eac2bf9f 100644
+--- a/src/Headers.php
++++ b/src/Headers.php
+@@ -228,7 +228,11 @@ class Headers implements Countable, Iterator
+         }
+ 
+         if ($fieldValue === null) {
+-            $this->addHeader(Header\GenericHeader::fromString($headerFieldNameOrLine));
++            $headers = $this->loadHeader($headerFieldNameOrLine);
++            $headers = is_array($headers) ? $headers : [$headers];
++            foreach ($headers as $header) {
++                $this->addHeader($header);
++            }
+         } elseif (is_array($fieldValue)) {
+             foreach ($fieldValue as $i) {
+                 $this->addHeader(Header\GenericMultiHeader::fromString($headerFieldNameOrLine . ':' . $i));
+@@ -466,6 +470,19 @@ class Headers implements Countable, Iterator
+     }
+ 
+     /**
++     * Create Header object from header line
++     *
++     * @param string $headerLine
++     * @return Header\HeaderInterface|Header\HeaderInterface[]
++     */
++    public function loadHeader($headerLine)
++    {
++        list($name, ) = Header\GenericHeader::splitHeaderLine($headerLine);
++        $class = $this->getPluginClassLoader()->load($name) ?: Header\GenericHeader::class;
++        return $class::fromString($headerLine);
++    }
++
++    /**
+      * @param $index
+      * @return mixed
+      */
