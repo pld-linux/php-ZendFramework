@@ -535,3 +535,64 @@ index c05cde1b..eac2bf9f 100644
       * @param $index
       * @return mixed
       */
+
+commit c3ac503689ffd00ac51e43c97c311e8753ecd32c
+Author: Elan Ruusamäe <glen@delfi.ee>
+Date:   Tue Jun 13 00:54:18 2017 +0300
+
+    fix MessageId having double brackets
+    
+    this got broken from pull/86 when header lazyloading was omitted
+
+diff --git a/src/Header/MessageId.php b/src/Header/MessageId.php
+index 850757ea..03c52a75 100644
+--- a/src/Header/MessageId.php
++++ b/src/Header/MessageId.php
+@@ -27,7 +27,7 @@ class MessageId implements HeaderInterface
+         }
+ 
+         $header = new static();
+-        $header->setId($value);
++        $header->setId(trim($value, '<>'));
+ 
+         return $header;
+     }
+
+commit 63ac228e6f883ed8e26a7b8a02130348e2332edf
+Author: Elan Ruusamäe <glen@delfi.ee>
+Date:   Wed Jun 28 00:19:11 2017 +0300
+
+    skip lazy-load for array as well
+    
+    refs:
+    - a4a93ef0
+    - ddf2e8ec
+    
+    this should be sent upstream, but upstream doesn't seem to respond even
+    to trivial pull-requests.
+
+diff --git a/src/Headers.php b/src/Headers.php
+index eac2bf9f..d4f9a9e7 100644
+--- a/src/Headers.php
++++ b/src/Headers.php
+@@ -207,9 +207,6 @@ class Headers implements Countable, Iterator
+     /**
+      * Add a raw header line, either in name => value, or as a single string 'name: value'
+      *
+-     * This method allows for lazy-loading in that the parsing and instantiation of HeaderInterface object
+-     * will be delayed until they are retrieved by either get() or current()
+-     *
+      * @throws Exception\InvalidArgumentException
+      * @param  string $headerFieldNameOrLine
+      * @param  string $fieldValue optional
+@@ -238,7 +235,9 @@ class Headers implements Countable, Iterator
+                 $this->addHeader(Header\GenericMultiHeader::fromString($headerFieldNameOrLine . ':' . $i));
+             }
+         } else {
+-            $this->addHeader(Header\GenericHeader::fromString($headerFieldNameOrLine . ':' . $fieldValue));
++            $class = $this->getPluginClassLoader()->load($headerFieldNameOrLine) ?: Header\GenericHeader::class;
++            $header = $class::fromString($headerFieldNameOrLine . ':' . $fieldValue);
++            $this->addHeader($header);
+         }
+ 
+         return $this;
