@@ -8,12 +8,12 @@
 
 Summary:	Zend Framework 2
 Name:		php-ZendFramework
-Version:	2.4.11
-Release:	4
+Version:	2.4.13
+Release:	1
 License:	BSD
 Group:		Development/Languages/PHP
 Source0:	https://packages.zendframework.com/releases/ZendFramework-%{version}/ZendFramework-%{version}.tgz
-# Source0-md5:	6049929eaa60473ec97ca51214d6e85c
+# Source0-md5:	a61dd64158d1f3edea1290959c3fd783
 # git clone https://github.com/zendframework/zf2.git
 # cd zf2; git checkout release-2.4.8
 # tar czf ../ZendFramework-tests-2.4.8.tgz tests
