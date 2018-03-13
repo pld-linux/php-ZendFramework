@@ -493,10 +493,11 @@ index c05cde1b..eac2bf9f 100644
          } elseif (is_array($fieldValue)) {
              foreach ($fieldValue as $i) {
                  $this->addHeader(Header\GenericMultiHeader::fromString($headerFieldNameOrLine . ':' . $i));
-@@ -466,6 +470,19 @@ class Headers implements Countable, Iterator
+@@ -465,6 +469,19 @@ class Headers implements Countable, Iterator
+         return true;
      }
  
-     /**
++    /**
 +     * Create Header object from header line
 +     *
 +     * @param string $headerLine
@@ -509,10 +510,9 @@ index c05cde1b..eac2bf9f 100644
 +        return $class::fromString($headerLine);
 +    }
 +
-+    /**
+     /**
       * @param $index
       * @return mixed
-      */
 
 commit c3ac503689ffd00ac51e43c97c311e8753ecd32c
 Author: Elan Ruusamäe <glen@delfi.ee>
@@ -574,3 +574,79 @@ index eac2bf9f..d4f9a9e7 100644
          }
  
          return $this;
+
+commit a95c496b4ec67953970ba366eefd29ba55ad1988
+Author: Elan Ruusamäe <glen@delfi.ee>
+Date:   Tue Jun 13 00:54:18 2017 +0300
+
+    update pull/156 to trim in setId, not in constructor
+    
+    otherwise it could get broken from other code paths as well
+
+diff --git a/src/Header/MessageId.php b/src/Header/MessageId.php
+index 03c52a75..e1bf2ff4 100644
+--- a/src/Header/MessageId.php
++++ b/src/Header/MessageId.php
+@@ -27,7 +27,7 @@ class MessageId implements HeaderInterface
+         }
+ 
+         $header = new static();
+-        $header->setId(trim($value, '<>'));
++        $header->setId($value);
+ 
+         return $header;
+     }
+@@ -68,6 +68,8 @@ class MessageId implements HeaderInterface
+     {
+         if ($id === null) {
+             $id = $this->createMessageId();
++        } else {
++            $id = trim($id, '<>');
+         }
+ 
+         if (! HeaderValue::isValid($id)
+
+commit 24aeac0f3d866e64fcb20320b677b49d30fce185
+Author: Elan Ruusamäe <glen@delfi.ee>
+Date:   Thu Dec 28 23:00:28 2017 +0200
+
+    unfold before calling iconv_mime_decode
+
+diff --git a/src/Header/HeaderWrap.php b/src/Header/HeaderWrap.php
+index e0be2f56..674b4f64 100644
+--- a/src/Header/HeaderWrap.php
++++ b/src/Header/HeaderWrap.php
+@@ -103,6 +103,13 @@ abstract class HeaderWrap
+      */
+     public static function mimeDecodeValue($value)
+     {
++        // unfold first, because iconv_mime_decode is discarding "\n" with no apparent reason
++        // making the resulting value no longer valid.
++
++        // see https://tools.ietf.org/html/rfc2822#section-2.2.3 about unfolding
++        $parts = explode(Headers::FOLDING, $value);
++        $value = implode(' ', $parts);
++
+         $decodedValue = iconv_mime_decode($value, ICONV_MIME_DECODE_CONTINUE_ON_ERROR, 'UTF-8');
+ 
+         return $decodedValue;
+
+commit 8bde8f75ccb1b28ec81248379bc6aa222fd24d7d
+Author: Elan Ruusamäe <glen@delfi.ee>
+Date:   Wed Jan 31 10:57:53 2018 +0200
+
+    format exception message properly
+
+diff --git a/src/Headers.php b/src/Headers.php
+index d4f9a9e7..4b2c0b9c 100644
+--- a/src/Headers.php
++++ b/src/Headers.php
+@@ -107,7 +107,7 @@ class Headers implements Countable, Iterator
+ 
+             // Line does not match header format!
+             throw new Exception\RuntimeException(sprintf(
+-                'Line "%s"does not match header format!',
++                'Line "%s" does not match header format!',
+                 $line
+             ));
+         }
