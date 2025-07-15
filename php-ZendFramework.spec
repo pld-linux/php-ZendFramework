@@ -1280,7 +1280,7 @@ usage. If the XML document uses ENTITY the library throw an Exception.
 
 %prep
 %setup -q -n ZendFramework-%{version} %{?with_tests:-a 1}
-%patch0 -p2 -d library/Zend/Mail
+%patch -P0 -p2 -d library/Zend/Mail
 
 # move doc for easier install
 install -d doc
