@@ -9,7 +9,7 @@
 Summary:	Zend Framework 2
 Name:		php-ZendFramework
 Version:	2.4.13
-Release:	3
+Release:	4
 License:	BSD
 Group:		Development/Languages/PHP
 Source0:	https://packages.zendframework.com/releases/ZendFramework-%{version}/ZendFramework-%{version}.tgz
@@ -27,6 +27,8 @@ BuildRequires:	phpunit >= 4.0.0
 Requires:	php(core) >= 5.3.23
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		_noautoreq_pear		Exception/InvalidArgumentException.php
 
 %description
 Zend Framework 2 is an open source framework for developing web
